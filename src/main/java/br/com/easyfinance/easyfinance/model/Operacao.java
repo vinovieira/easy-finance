@@ -8,17 +8,15 @@ public abstract class Operacao {
     private String descricao;
     private double valor;
     private LocalDate data;
-    private String pagamento;
 
     public Operacao() {
     }
 
-    public Operacao(int codigo, String descricao, double valor, LocalDate data, String pagamento) {
+    public Operacao(int codigo, String descricao, double valor, LocalDate data) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.valor = valor;
         this.data = data;
-        this.pagamento = pagamento;
     }
 
     public int getCodigo() {
@@ -53,11 +51,4 @@ public abstract class Operacao {
         this.data = data;
     }
 
-    public String getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(String pagamento) {
-        this.pagamento = pagamento;
-    }
 }

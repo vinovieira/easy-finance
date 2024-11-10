@@ -5,13 +5,13 @@ import java.time.LocalDate;
 
 public class Despesa extends Operacao {
     private String categoria;
+    private String pagamento;
 
-    // Construtor padrão
     public Despesa() {}
 
-    // Construtor com argumentos
     public Despesa(int codigo, String descricao, double valor, LocalDate data, String pagamento, String categoria) {
-        super(codigo, descricao, valor, data, pagamento);
+        super(codigo, descricao, valor, data);
+        this.pagamento = pagamento;
         this.categoria = categoria;
     }
 
@@ -21,5 +21,13 @@ public class Despesa extends Operacao {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(String pagamento) {
+        this.pagamento = pagamento;
     }
 }
