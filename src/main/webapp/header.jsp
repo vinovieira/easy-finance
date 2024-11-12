@@ -12,14 +12,45 @@
                 <li class="nav-item">
                     <a class="nav-link" href="receitas?acao=listar">Receitas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Investimentos</a>
-                </li>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link" href="#">Investimentos</a>--%>
+<%--                </li>--%>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <c:if test="${empty user }">
+               <span class="navbar-text text-danger" style="margin-right:10px">
+                       ${erro }
+               </span>
+                <form class="form-inline my-lg-0" action="login" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <input
+                                    class="form-control mr-sm-2"
+                                    type="text"
+                                    name="email"
+                                    placeholder="E-mail">
+                        </div>
+                        <div class="col">
+                            <input
+                                    class="form-control mr-sm-2"
+                                    type="password"
+                                    name="senha"
+                                    placeholder="Senha">
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-success my-2 my-sm-0"
+                                    type="submit">Entrar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </c:if>
+            <c:if test="${not empty user }">
+               <span class="navbar-text">
+                   ${user }
+                   <a href="login" class="btn btn-outline-primary my-2 my-sm-0">Sair</a>
+               </span>
+            </c:if>
+
         </div>
     </div>
 </nav>
