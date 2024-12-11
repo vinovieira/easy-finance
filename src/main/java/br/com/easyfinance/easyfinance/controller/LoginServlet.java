@@ -1,10 +1,10 @@
 package br.com.easyfinance.easyfinance.controller;
 
 import br.com.easyfinance.easyfinance.bo.EmailBo;
-import br.com.easyfinance.easyfinance.dao.UsuarioDao;
+import br.com.easyfinance.easyfinance.dao.UserDao;
 import br.com.easyfinance.easyfinance.exception.EmailException;
 import br.com.easyfinance.easyfinance.factory.DaoFactory;
-import br.com.easyfinance.easyfinance.model.Usuario;
+import br.com.easyfinance.easyfinance.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,11 +18,11 @@ import java.time.LocalDate;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
-    private UsuarioDao dao;
+    private UserDao dao;
     private EmailBo bo;
 
     public LoginServlet() {
-        dao = DaoFactory.getUsuarioDao();
+        dao = DaoFactory.getUserDao();
         bo = new EmailBo();
     }
 
@@ -31,11 +31,11 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
 
         String email = request.getParameter("email");
-        String senha = request.getParameter("senha");
+        String password = request.getParameter("password");
 
-        Usuario usuario = new Usuario(email, senha);
+        User user = new User(null, null,email, password);
 
-        if (dao.validarUsuario(usuario)) {
+        if (dao.validateUser(user)) {
 
             HttpSession session = request.getSession();
             session.setAttribute("user", email);
