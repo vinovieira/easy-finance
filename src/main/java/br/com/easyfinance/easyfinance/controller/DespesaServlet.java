@@ -7,10 +7,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import br.com.easyfinance.easyfinance.dao.DespesaDao;
+import br.com.easyfinance.easyfinance.dao.ExpenseDao;
 import br.com.easyfinance.easyfinance.exception.DBException;
 import br.com.easyfinance.easyfinance.factory.DaoFactory;
-import br.com.easyfinance.easyfinance.model.Despesa;
+import br.com.easyfinance.easyfinance.model.Expense;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet("/despesas")
 public class DespesaServlet extends HttpServlet {
 
-    private DespesaDao dao;
+    private ExpenseDao dao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -65,7 +65,7 @@ public class DespesaServlet extends HttpServlet {
             String categoria = req
                     .getParameter("categoria");
 
-            Despesa despesa = new Despesa(
+            Expense despesa = new Expense(
                     0,
                     descricao,
                     valor,
@@ -103,7 +103,7 @@ public class DespesaServlet extends HttpServlet {
             String categoria = req
                     .getParameter("categoria");
 
-            Despesa despesa = new Despesa(
+            Expense despesa = new Expense(
                     codigo,
                     descricao,
                     valor,
@@ -143,7 +143,7 @@ public class DespesaServlet extends HttpServlet {
 
     private void abrirFormEdicao(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("codigo"));
-        Despesa despesa = dao.buscar(id);
+        Expense despesa = dao.buscar(id);
         req.setAttribute("despesa", despesa);
 //        req.getRequestDispatcher("editar-despesa.jsp")
 //                .forward(req, resp);
@@ -152,7 +152,7 @@ public class DespesaServlet extends HttpServlet {
     }
 
     private void listar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Despesa> lista = dao.listar();
+        List<Expense> lista = dao.listar();
         req.setAttribute("despesas", lista);
         req.getRequestDispatcher("lista-despesa.jsp")
                 .forward(req, resp);

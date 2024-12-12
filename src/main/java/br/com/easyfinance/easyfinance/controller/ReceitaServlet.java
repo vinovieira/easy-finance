@@ -1,9 +1,9 @@
 package br.com.easyfinance.easyfinance.controller;
 
-import br.com.easyfinance.easyfinance.dao.ReceitaDao;
+import br.com.easyfinance.easyfinance.dao.IncomeDao;
 import br.com.easyfinance.easyfinance.exception.DBException;
 import br.com.easyfinance.easyfinance.factory.DaoFactory;
-import br.com.easyfinance.easyfinance.model.Receita;
+import br.com.easyfinance.easyfinance.model.Income;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet("/receitas")
 public class ReceitaServlet extends HttpServlet {
 
-    private ReceitaDao dao;
+    private IncomeDao dao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -62,7 +62,7 @@ public class ReceitaServlet extends HttpServlet {
             String fonte = req
                     .getParameter("fonte");
 
-            Receita receita = new Receita(
+            Income receita = new Income(
                     0,
                     descricao,
                     valor,
@@ -97,7 +97,7 @@ public class ReceitaServlet extends HttpServlet {
             String fonte = req
                     .getParameter("fonte");
 
-            Receita receita = new Receita(
+            Income receita = new Income(
                     codigo,
                     descricao,
                     valor,
@@ -136,7 +136,7 @@ public class ReceitaServlet extends HttpServlet {
 
     private void abrirFormEdicao(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("codigo"));
-        Receita receita = dao.buscar(id);
+        Income receita = dao.buscar(id);
         req.setAttribute("receita", receita);
 //        req.getRequestDispatcher("editar-receita.jsp")
 //                .forward(req, resp);
@@ -145,7 +145,7 @@ public class ReceitaServlet extends HttpServlet {
     }
 
     private void listar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Receita> lista = dao.listar();
+        List<Income> lista = dao.listar();
         req.setAttribute("receitas", lista);
         req.getRequestDispatcher("lista-receita.jsp")
                 .forward(req, resp);
