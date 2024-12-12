@@ -161,7 +161,7 @@ public class ReceitaServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 
         super.init(config);
-        dao = DaoFactory.getReceitaDao();
+        dao = DaoFactory.getIncomeDao();
 
     }
 }
