@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-@WebServlet("/receitas")
+@WebServlet("/income")
 public class ReceitaServlet extends HttpServlet {
 
     private IncomeDao dao;
@@ -24,88 +24,94 @@ public class ReceitaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String acao = req.getParameter("acao");
+        String action = req.getParameter("action");
 
-        switch (acao) {
-            case ("cadastrar"):
-                cadastrar(req, resp);
+        switch (action) {
+            case ("create"):
+                create(req, resp);
                 break;
-            case ("editar"):
-                editar(req, resp);
+            case ("update"):
+                update(req, resp);
                 break;
-            case ("excluir"):
-                excluir(req, resp);
+            case ("delete"):
+                delete(req, resp);
         }
 
     }
 
-    private void excluir(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int codigo = Integer.parseInt(req.getParameter("codigoExcluir"));
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("idDelete"));
         try {
-            dao.remover(codigo);
+            dao.delete(id);
             req.setAttribute("mensagem", "Produto removido!");
         } catch (DBException e) {
             e.printStackTrace();
             req.setAttribute("erro", "Erro ao atualizar!");
         }
-        listar(req, resp);
+        list(req, resp);
     }
 
-    private void cadastrar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void create(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String descricao = req
-                    .getParameter("descricao");
-            double valor = Double
-                    .parseDouble(req.getParameter("valor"));
-            LocalDate data = LocalDate
-                    .parse(req.getParameter("data"));
-            String fonte = req
-                    .getParameter("fonte");
+            String description = req
+                    .getParameter("description");
+            double value = Double
+                    .parseDouble(req.getParameter("value"));
+            LocalDate date = LocalDate
+                    .parse(req.getParameter("date"));
+            int userId = Integer
+                    .parseInt(req.getParameter("userId"));
+            String source = req
+                    .getParameter("source");
 
-            Income receita = new Income(
+            Income income = new Income(
                     0,
-                    descricao,
-                    valor,
-                    data,
-                    fonte
+                    description,
+                    value,
+                    date,
+                    userId,
+                    source
             );
 
-            dao.cadastrar(receita);
+            dao.create(income);
 
             req.setAttribute("mensagem", "Produto cadastrado!");
 
         } catch (DBException db) {
             db.printStackTrace();
-            req.setAttribute("erro", "Erro ao cadastrar");
+            req.setAttribute("erro", "Erro ao create");
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("erro", "Por favor, valide os dados");
         }
-        //req.getRequestDispatcher("lista-receita.jsp").forward(req, resp);
-        listar(req,resp);
+        //req.getRequestDispatcher("list-income.jsp").forward(req, resp);
+        list(req,resp);
     }
 
-    private void editar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            int codigo = Integer.parseInt(req.getParameter("codigo"));
-            String descricao = req
-                    .getParameter("descricao");
-            double valor = Double
-                    .parseDouble(req.getParameter("valor"));
-            LocalDate data = LocalDate
-                    .parse(req.getParameter("data"));
-            String fonte = req
-                    .getParameter("fonte");
+            int id = Integer.parseInt(req.getParameter("id"));
+            String description = req
+                    .getParameter("description");
+            double value = Double
+                    .parseDouble(req.getParameter("value"));
+            LocalDate date = LocalDate
+                    .parse(req.getParameter("date"));
+            int userId = Integer
+                    .parseInt(req.getParameter("userId"));
+            String source = req
+                    .getParameter("source");
 
-            Income receita = new Income(
-                    codigo,
-                    descricao,
-                    valor,
-                    data,
-                    fonte
+            Income income = new Income(
+                    id,
+                    description,
+                    value,
+                    date,
+                    userId,
+                    source
             );
 
-            dao.atualizar(receita);
+            dao.update(income);
 
             req.setAttribute("mensagem", "Produto atualizado!");
         } catch (DBException db) {
@@ -115,39 +121,39 @@ public class ReceitaServlet extends HttpServlet {
             e.printStackTrace();
             req.setAttribute("erro", "Por favor, valide os dados");
         }
-        listar(req, resp);
+        list(req, resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String acao = req.getParameter("acao");
+        String action = req.getParameter("action");
 
-        switch (acao) {
-            case "listar":
-                listar(req, resp);
+        switch (action) {
+            case "list":
+                list(req, resp);
                 break;
-            case "abrir-form-edicao":
-                abrirFormEdicao(req, resp);
+            case "open-edit-form":
+                openEditForm(req, resp);
         }
 
     }
 
-    private void abrirFormEdicao(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("codigo"));
-        Income receita = dao.buscar(id);
-        req.setAttribute("receita", receita);
-//        req.getRequestDispatcher("editar-receita.jsp")
+    private void openEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        Income income = dao.read(id);
+        req.setAttribute("income", income);
+//        req.getRequestDispatcher("update-income.jsp")
 //                .forward(req, resp);
         req.setAttribute("mostrarModal", true);
-        listar(req, resp);
+        list(req, resp);
     }
 
-    private void listar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Income> lista = dao.listar();
-        req.setAttribute("receitas", lista);
-        req.getRequestDispatcher("lista-receita.jsp")
+    private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Income> list = dao.list();
+        req.setAttribute("incomes", list);
+        req.getRequestDispatcher("list-income.jsp")
                 .forward(req, resp);
     }
 

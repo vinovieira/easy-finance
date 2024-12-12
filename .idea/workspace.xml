@@ -10,20 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="refactor: user">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/ExpenseDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/IncomeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/DespesaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/DespesaServlet.java" afterDir="false" />
+    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="refactor: Expense and Income Dao Interface, Dao Implementation and Model">
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/DespesaDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/ReceitaDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleDespesaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleExpenseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleReceitaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleIncomeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/factory/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/factory/DaoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Despesa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Expense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Operacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Receita.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Income.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/IncomeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/IncomeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/lista-receita.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/lista-receita.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +323,7 @@
       <workItem from="1732115304379" duration="1201000" />
       <workItem from="1733791559000" duration="1419000" />
       <workItem from="1733865466556" duration="11014000" />
-      <workItem from="1733950404447" duration="9137000" />
+      <workItem from="1733950404447" duration="12836000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -367,18 +357,38 @@
       <option name="project" value="LOCAL" />
       <updated>1733954522684</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactor: Expense and Income Dao Interface, Dao Implementation and Model">
+      <option name="closed" value="true" />
+      <created>1733968160644</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733968160644</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="primeiro commit" />
     <MESSAGE value="inserir controle de receita funcional" />
     <MESSAGE value="inserir login, filtro, email de login" />
     <MESSAGE value="refactor: user" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: user" />
+    <MESSAGE value="refactor: Expense and Income Dao Interface, Dao Implementation and Model" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Expense and Income Dao Interface, Dao Implementation and Model" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
