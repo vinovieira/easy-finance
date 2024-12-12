@@ -14,7 +14,7 @@ public class OracleUserDao implements UserDao {
     private Connection conexao;
 
     @Override
-    public boolean validateUser(User user) {
+    public User validateUser(User user) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -22,8 +22,9 @@ public class OracleUserDao implements UserDao {
                     .getInstance()
                     .getConnection();
 
-            String sql = "SELECT * FROM T_EF_USERS " +
-                    "WHERE EMAIL_USER = ? AND PASSWORD_USER = ?";
+            String sql = "SELECT ID_USER, NM_USER, EMAIL_USER " +
+                        "FROM T_EF_USERS " +
+                        "WHERE EMAIL_USER = ? AND PASSWORD_USER = ?";
 
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, user.getEmail());
@@ -31,7 +32,10 @@ public class OracleUserDao implements UserDao {
             rs = stmt.executeQuery();
 
             if (rs.next()){
-                return true;
+                return new User(rs.getInt("id_user"),
+                                rs.getString("nm_user"),
+                                rs.getString("email_user"),
+                                null);
             }
 
         } catch (SQLException e) {
@@ -45,6 +49,6 @@ public class OracleUserDao implements UserDao {
                 e.printStackTrace();
             }
         }
-        return false;
+        return null;
     }
 }

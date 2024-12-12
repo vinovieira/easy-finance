@@ -34,11 +34,12 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         User user = new User(null, null,email, password);
+        User authenticatedUser = dao.validateUser(user);
 
-        if (dao.validateUser(user)) {
-
+        if (authenticatedUser != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("user", email);
+            session.setAttribute("user", authenticatedUser);
+
             String mensagem =
                     "Um login foi realizado na plataforma em " + LocalDate.now();
             request.getRequestDispatcher("home.jsp").forward(request, response);

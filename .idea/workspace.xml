@@ -10,13 +10,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="refactor: ExpenseServlet and list-expense.jsp">
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" afterDir="false" />
+    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="fix: login and others">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/factory/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/factory/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -350,7 +349,7 @@
       <workItem from="1733791559000" duration="1419000" />
       <workItem from="1733865466556" duration="11014000" />
       <workItem from="1733950404447" duration="15539000" />
-      <workItem from="1734025310754" duration="10201000" />
+      <workItem from="1734025310754" duration="13252000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -408,7 +407,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734030206210</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix: login and others">
+      <option name="closed" value="true" />
+      <created>1734044487290</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734044487290</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +455,8 @@
     <MESSAGE value="refactor: Expense and Income Dao Interface, Dao Implementation and Model" />
     <MESSAGE value="refactor: IncomeServlet and list-income.jsp" />
     <MESSAGE value="refactor: ExpenseServlet and list-expense.jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: ExpenseServlet and list-expense.jsp" />
+    <MESSAGE value="fix: login and others" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: login and others" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
