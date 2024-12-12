@@ -42,31 +42,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${receitas}" var="receita">
+                    <c:forEach items="${incomes}" var="income">
                         <tr>
-                            <td>${receita.descricao}</td>
-                            <td class="text-end">${receita.valor}</td>
+                            <td>${income.description}</td>
+                            <td class="text-end">${income.value}</td>
                             <td class="text-center">
                                 <fmt:parseDate
-                                        value="${receita.data}"
+                                        value="${income.date}"
                                         pattern="yyyy-MM-dd"
-                                        var="dataFmt" />
+                                        var="dateFmt" />
                                 <fmt:formatDate
-                                        value="${dataFmt}"
+                                        value="${dateFmt}"
                                         pattern="dd-MM-yyyy" />
                             </td>
-                            <td class="text-end">${receita.fonte}</td>
+                            <td class="text-end">${income.source}</td>
 
                             <td class="text-center">
-                                <c:url value="receitas" var="link">
-                                    <c:param name="acao" value="abrir-form-edicao"/>
-                                    <c:param name="codigo" value="${receita.codigo}"/>
+                                <c:url value="income" var="link">
+                                    <c:param name="action" value="open-edit-form"/>
+                                    <c:param name="id" value="${income.id}"/>
                                 </c:url>
-<%--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAtualizarReceita" onclick="${link}">--%>
+<%--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdateIncome" onclick="${link}">--%>
 <%--                                    Editar--%>
 <%--                                </button>--%>
                                 <a href="${link}" class="btn btn-primary">Editar</a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#excluirModal" onclick="codigoExcluir.value = ${receita.codigo}">
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="idDelete.value = ${income.id}">
                                     Excluir
                                 </button>
                             </td>
@@ -90,22 +90,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="receitas?acao=cadastrar" method="post">
+                <form action="income?action=create" method="post">
                     <div class="form-group mb-3">
-                        <label for="id-descricao">Descrição</label>
-                        <input type="text" name="descricao" id="id-descricao" class="form-control">
+                        <label for="id-description">Descrição</label>
+                        <input type="text" name="description" id="id-description" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-valor">Valor</label>
-                        <input type="text" name="valor" id="id-valor" class="form-control">
+                        <label for="id-value">Valor</label>
+                        <input type="text" name="value" id="id-value" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-data">Data</label>
-                        <input type="date" name="data" id="id-data" class="form-control">
+                        <label for="id-date">Data</label>
+                        <input type="date" name="date" id="id-date" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-fonte">Fonte</label>
-                        <input type="text" name="fonte" id="id-fonte" class="form-control">
+                        <label for="id-source">Fonte</label>
+                        <input type="text" name="source" id="id-source" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
@@ -115,7 +115,7 @@
 </div>
 <div
         class="modal fade"
-        id="excluirModal"
+        id="deleteModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -140,15 +140,15 @@
             </div>
             <div class="modal-footer">
 
-                <form action="receitas" method="post">
+                <form action="income" method="post">
                     <input
                             type="hidden"
-                            name="acao"
-                            value="excluir">
+                            name="action"
+                            value="delete">
                     <input
                             type="hidden"
-                            name="codigoExcluir"
-                            id="codigoExcluir">
+                            name="idDelete"
+                            id="idDelete">
                     <button
                             type="button"
                             class="btn btn-secondary"
@@ -166,37 +166,37 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalAtualizarReceita" tabindex="-1" aria-labelledby="modalAtualizarReceitaLabel" aria-hidden="true">
+<div class="modal fade" id="modalUpdateIncome" tabindex="-1" aria-labelledby="modalUpdateIncomeLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAtualizarReceitaLabel">Atualizar Receita</h5>
+                <h5 class="modal-title" id="modalUpdateIncomeLabel">Atualizar Receita</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="receitas" method="post">
-                    <input type="hidden" value="editar" name="acao">
-                    <input type="hidden" value="${receita.codigo}" name="codigo">
+                <form action="income" method="post">
+                    <input type="hidden" value="update" name="action">
+                    <input type="hidden" value="${income.id}" name="id">
 
                     <div class="form-group mb-3">
-                        <label for="id-editar-descricao">Nome</label>
-                        <input type="text" name="descricao" id="id-editar-descricao" class="form-control" value="${receita.descricao}">
+                        <label for="id-update-description">Nome</label>
+                        <input type="text" name="description" id="id-update-description" class="form-control" value="${income.description}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-valor">Valor</label>
-                        <input type="text" name="valor" id="id-editar-valor" class="form-control" value="${receita.valor}">
+                        <label for="id-update-value">Valor</label>
+                        <input type="text" name="value" id="id-update-value" class="form-control" value="${income.value}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-data">Data</label>
-                        <input type="date" name="data" id="id-editar-data" class="form-control" value="${receita.data}">
+                        <label for="id-update-date">Data</label>
+                        <input type="date" name="date" id="id-update-date" class="form-control" value="${income.date}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-fonte">Fonte</label>
-                        <input type="text" name="fonte" id="id-editar-fonte" class="form-control" value="${receita.fonte}">
+                        <label for="id-update-source">Fonte</label>
+                        <input type="text" name="source" id="id-update-source" class="form-control" value="${income.source}">
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salvar</button>
-                        <a href="receitas?acao=listar" class="btn btn-warning">Cancelar</a>
+                        <a href="income?action=list" class="btn btn-warning">Cancelar</a>
                     </div>
                 </form>
             </div>
@@ -208,7 +208,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         <% if (request.getAttribute("mostrarModal") != null && (boolean) request.getAttribute("mostrarModal")) { %>
-        const modal = new bootstrap.Modal(document.getElementById('modalAtualizarReceita'));
+        const modal = new bootstrap.Modal(document.getElementById('modalUpdateIncome'));
         modal.show();
         <% } %>
     });
