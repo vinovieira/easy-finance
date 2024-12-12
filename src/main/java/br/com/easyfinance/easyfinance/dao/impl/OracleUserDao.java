@@ -22,8 +22,8 @@ public class OracleUserDao implements UserDao {
                     .getInstance()
                     .getConnection();
 
-            String sql = "SELECT * FROM T_EF_USUARIO " +
-                    "WHERE DS_EMAIL = ? AND DS_SENHA = ?";
+            String sql = "SELECT * FROM T_EF_USERS " +
+                    "WHERE EMAIL_USER = ? AND PASSWORD_USER = ?";
 
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, user.getEmail());

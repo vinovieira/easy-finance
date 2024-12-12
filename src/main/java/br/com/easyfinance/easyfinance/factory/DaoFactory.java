@@ -8,10 +8,10 @@ import br.com.easyfinance.easyfinance.dao.impl.OracleIncomeDao;
 import br.com.easyfinance.easyfinance.dao.impl.OracleUserDao;
 
 public class DaoFactory {
-    public static ExpenseDao getDespesaDao() {
+    public static ExpenseDao getExpenseDao() {
         return new OracleExpenseDao();
     }
-    public static IncomeDao getReceitaDao() {
+    public static IncomeDao getIncomeDao() {
         return new OracleIncomeDao();
     }
     public static UserDao getUserDao() { return new OracleUserDao(); }

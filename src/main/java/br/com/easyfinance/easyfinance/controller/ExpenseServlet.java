@@ -176,7 +176,7 @@ public class ExpenseServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 
         super.init(config);
-        dao = DaoFactory.getDespesaDao();
+        dao = DaoFactory.getExpenseDao();
 
     }
 }

@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="despesas?acao=listar">Despesas</a>
+                    <a class="nav-link" aria-current="page" href="expense?action=list">Despesas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="receitas?acao=listar">Receitas</a>
+                    <a class="nav-link" href="income?action=list">Receitas</a>
                 </li>
 <%--                <li class="nav-item">--%>
 <%--                    <a class="nav-link" href="#">Investimentos</a>--%>
@@ -33,7 +33,7 @@
                             <input
                                     class="form-control mr-sm-2"
                                     type="password"
-                                    name="senha"
+                                    name="password"
                                     placeholder="Senha">
                         </div>
                         <div class="col">
