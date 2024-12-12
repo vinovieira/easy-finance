@@ -30,53 +30,54 @@
             </c:if>
             <div class="card-body table-responsive">
                 <h5 class="card-title">Gestão de Despesas</h5>
-                <p class="card-text">Mantenha os dados dos seus
-                    produtos sempre atualizados e acessíveis.</p>
+                <p class="card-text">Mantenha suas despesas sob controle!</p>
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
                         <th>Descrição</th>
                         <th class="text-end">Valor</th>
                         <th class="text-end">Data</th>
-                        <th class="text-center">Forma de Pagamento</th>
+                        <th>Pago</th>
                         <th class="text-center">Categoria</th>
+                        <th class="text-center">Forma de Pagamento</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${despesas}" var="despesa">
+                    <c:forEach items="${expenses}" var="expense">
                         <tr>
-                            <td>${despesa.descricao}</td>
-                            <td class="text-end">${despesa.valor}</td>
+                            <td>${expense.description}</td>
+                            <td class="text-end">${expense.value}</td>
                             <td class="text-center">
                                 <fmt:parseDate
-                                        value="${despesa.data}"
+                                        value="${expense.date}"
                                         pattern="yyyy-MM-dd"
-                                        var="dataFmt" />
+                                        var="dateFmt" />
                                 <fmt:formatDate
-                                        value="${dataFmt}"
+                                        value="${dateFmt}"
                                         pattern="dd-MM-yyyy" />
                             </td>
-                            <td class="text-end">${despesa.pagamento}</td>
-                            <td class="text-end">${despesa.categoria}</td>
+                            <td class="text-end">${expense.isPaid}</td>
+                            <td class="text-end">${expense.categoryId}</td>
+                            <td class="text-end">${expense.paymentMethodId}</td>
 
                             <td class="text-center">
-                                <c:url value="despesas" var="link">
-                                    <c:param name="acao" value="abrir-form-edicao"/>
-                                    <c:param name="codigo" value="${despesa.codigo}"/>
+                                <c:url value="expense" var="link">
+                                    <c:param name="action" value="open-update-form"/>
+                                    <c:param name="id" value="${expense.id}"/>
                                 </c:url>
 <%--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAtualizarDespesa" onclick="${link}">--%>
 <%--                                    Editar--%>
 <%--                                </button>--%>
                                 <a href="${link}" class="btn btn-primary">Editar</a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#excluirModal" onclick="codigoExcluir.value = ${despesa.codigo}">
-                                    Excluir
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="idDelete.value = ${expense.id}">
+                                    Exluir
                                 </button>
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCadastroDespesa">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateExpense">
                     Cadastrar Despesa
                 </button>
             </div>
@@ -84,34 +85,38 @@
     </div>
 </div>
 <!-- Modais -->
-<div class="modal fade" id="modalCadastroDespesa" tabindex="-1" aria-labelledby="modalCadastroDespesaLabel" aria-hidden="true">
+<div class="modal fade" id="modalCreateExpense" tabindex="-1" aria-labelledby="modalCreateExpenseLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCadastroDespesaLabel">Cadastro de Despesa</h5>
+                <h5 class="modal-title" id="modalCreateExpenseLabel">Cadastro de Despesa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="despesas?acao=cadastrar" method="post">
+                <form action="expense?action=create" method="post">
                     <div class="form-group mb-3">
-                        <label for="id-descricao">Descrição</label>
-                        <input type="text" name="descricao" id="id-descricao" class="form-control">
+                        <label for="id-description">Descrição</label>
+                        <input type="text" name="description" id="id-description" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-valor">Valor</label>
-                        <input type="text" name="valor" id="id-valor" class="form-control">
+                        <label for="id-value">Valor</label>
+                        <input type="text" name="value" id="id-value" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-data">Data da Despesa</label>
-                        <input type="date" name="data" id="id-data" class="form-control">
+                        <label for="id-date">Data da Despesa</label>
+                        <input type="date" name="date" id="id-date" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-forma-pagamento">Forma de Pagamento</label>
-                        <input type="text" name="pagamento" id="id-forma-pagamento" class="form-control">
+                        <label for="id-ispaid">Pago</label>
+                        <input type="checkbox" name="paid" id="id-ispaid" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-categoria">Categoria</label>
-                        <input type="text" name="categoria" id="id-categoria" class="form-control">
+                        <label for="id-category">Categoria</label>
+                        <input type="text" name="category" id="id-category" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id-payment-method">Forma de Pagamento</label>
+                        <input type="text" name="payment" id="id-payment-method" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
@@ -121,7 +126,7 @@
 </div>
 <div
         class="modal fade"
-        id="excluirModal"
+        id="deleteModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -146,15 +151,15 @@
             </div>
             <div class="modal-footer">
 
-                <form action="despesas" method="post">
+                <form action="expense" method="post">
                     <input
                             type="hidden"
-                            name="acao"
-                            value="excluir">
+                            name="action"
+                            value="delete">
                     <input
                             type="hidden"
-                            name="codigoExcluir"
-                            id="codigoExcluir">
+                            name="idDelete"
+                            id="idDelete">
                     <button
                             type="button"
                             class="btn btn-secondary"
@@ -180,33 +185,33 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="despesas" method="post">
-                    <input type="hidden" value="editar" name="acao">
-                    <input type="hidden" value="${despesa.codigo}" name="codigo">
+                <form action="expense" method="post">
+                    <input type="hidden" value="update" name="action">
+                    <input type="hidden" value="${expense.id}" name="id">
 
                     <div class="form-group mb-3">
-                        <label for="id-editar-descricao">Nome</label>
-                        <input type="text" name="descricao" id="id-editar-descricao" class="form-control" value="${despesa.descricao}">
+                        <label for="id-update-description">Nome</label>
+                        <input type="text" name="description" id="id-update-description" class="form-control" value="${expense.description}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-valor">Valor</label>
-                        <input type="text" name="valor" id="id-editar-valor" class="form-control" value="${despesa.valor}">
+                        <label for="id-update-value">Valor</label>
+                        <input type="text" name="value" id="id-update-value" class="form-control" value="${expense.value}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-data">Data da Despesa</label>
-                        <input type="date" name="data" id="id-editar-data" class="form-control" value="${despesa.data}">
+                        <label for="id-update-date">Data da Despesa</label>
+                        <input type="date" name="date" id="id-update-date" class="form-control" value="${expense.date}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-forma-pagamento">Forma de Pagamento</label>
-                        <input type="text" name="pagamento" id="id-editar-forma-pagamento" class="form-control" value="${despesa.pagamento}">
+                        <label for="id-update-payment-method">Forma de Pagamento</label>
+                        <input type="text" name="pagamento" id="id-update-payment-method" class="form-control" value="${expense.pagamento}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="id-editar-categoria">Categoria</label>
-                        <input type="text" name="categoria" id="id-editar-categoria" class="form-control" value="${despesa.categoria}">
+                        <label for="id-update-category">Categoria</label>
+                        <input type="text" name="category" id="id-update-category" class="form-control" value="${expense.category}">
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salvar</button>
-                        <a href="despesas?acao=listar" class="btn btn-warning">Cancelar</a>
+                        <a href="expense?action=listar" class="btn btn-warning">Cancelar</a>
                     </div>
                 </form>
             </div>
