@@ -74,7 +74,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCadastroReceita">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateIncome">
                     Cadastrar Receita
                 </button>
             </div>
@@ -82,11 +82,11 @@
     </div>
 </div>
 <!-- Modais -->
-<div class="modal fade" id="modalCadastroReceita" tabindex="-1" aria-labelledby="modalCadastroReceitaLabel" aria-hidden="true">
+<div class="modal fade" id="modalCreateIncome" tabindex="-1" aria-labelledby="modalCreateIncomeLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalCadastroReceitaLabel">Cadastro de Receita</h5>
+                <h5 class="modal-title" id="modalCreateIncomeLabel">Cadastro de Receita</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -207,7 +207,7 @@
 <script src="resources/js/bootstrap.bundle.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        <% if (request.getAttribute("mostrarModal") != null && (boolean) request.getAttribute("mostrarModal")) { %>
+        <% if (request.getAttribute("showModal") != null && (boolean) request.getAttribute("showModal")) { %>
         const modal = new bootstrap.Modal(document.getElementById('modalUpdateIncome'));
         modal.show();
         <% } %>
