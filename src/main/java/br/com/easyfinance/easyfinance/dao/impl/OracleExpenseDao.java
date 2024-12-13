@@ -57,8 +57,8 @@ public class OracleExpenseDao implements ExpenseDao {
                 "value_expense= ?, " +
                 "date_expense= ?, " +
                 "user_id= ?, " +
-                "isPaid_expense= ? " +
-                "category_id= ? " +
+                "ispaid_expense= ?, " +
+                "category_id= ?, " +
                 "payment_method_id= ? " +
                 "WHERE id_expense= ?";
         try {
