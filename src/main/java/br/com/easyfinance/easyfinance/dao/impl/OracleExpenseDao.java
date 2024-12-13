@@ -20,16 +20,16 @@ public class OracleExpenseDao implements ExpenseDao {
         conexao = ConnectionManager.getInstance().getConnection();
         String sql = "INSERT INTO T_EF_EXPENSE " +
                 "(id_expense, ds_expense, value_expense, " +
-                "date_expense, user_id, isPaid_expense, category_id, payment_method_id) " +
+                "date_expense, user_id, ispaid_expense, category_id, payment_method_id) " +
                 "VALUES (SQ_TB_EXPENSE.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, expense.getDescription());
-            stmt.setDouble(2, expense.getValor());
-            stmt.setDate(3, Date.valueOf(expense.getData()));
+            stmt.setDouble(2, expense.getValue());
+            stmt.setDate(3, Date.valueOf(expense.getDate()));
             stmt.setInt(4, expense.getUserId());
-            stmt.setInt(5, expense.isPaid() ? 1 : 0);
+            stmt.setInt(5, expense.getIsPaid());
             stmt.setInt(6, expense.getCategoryId());
             stmt.setInt(7, expense.getPaymentMethodId());
             stmt.executeUpdate();
@@ -64,10 +64,10 @@ public class OracleExpenseDao implements ExpenseDao {
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, expense.getDescription());
-            stmt.setDouble(2, expense.getValor());
-            stmt.setDate(3, Date.valueOf(expense.getData()));
+            stmt.setDouble(2, expense.getValue());
+            stmt.setDate(3, Date.valueOf(expense.getDate()));
             stmt.setInt(4, expense.getUserId());
-            stmt.setInt(5, expense.isPaid() ? 1 : 0);
+            stmt.setInt(5, expense.getIsPaid());
             stmt.setInt(6, expense.getCategoryId());
             stmt.setInt(7, expense.getPaymentMethodId());
             stmt.setInt(8, expense.getId());
@@ -127,7 +127,7 @@ public class OracleExpenseDao implements ExpenseDao {
                 double value = rs.getDouble("value_expense");
                 LocalDate date = rs.getDate("date_expense").toLocalDate();
                 int userId = rs.getInt("user_id");
-                boolean isPaid = rs.getBoolean("isPaid_expense");
+                int isPaid = rs.getInt("isPaid_expense");
                 int categoryId = rs.getInt("category_id");
                 int paymentMethodId = rs.getInt("payment_method_id");
                 expense = new Expense(id_expense, description, value, date, userId, isPaid, categoryId, paymentMethodId);
@@ -147,15 +147,17 @@ public class OracleExpenseDao implements ExpenseDao {
     }
 
     @Override
-    public List<Expense> list() {
+    public List<Expense> list(int uId) {
         List<Expense> lista = new ArrayList<Expense>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             conexao = ConnectionManager.getInstance().getConnection();
-            String sql = "SELECT * FROM T_EF_EXPENSE";
+            String sql = "SELECT * FROM T_EF_EXPENSE " +
+                    "WHERE user_id= ?";
             stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, uId);
             rs = stmt.executeQuery();
 
             //Percorre todos os registros encontrados
@@ -165,7 +167,7 @@ public class OracleExpenseDao implements ExpenseDao {
                 double value = rs.getDouble("value_expense");
                 LocalDate date = rs.getDate("date_expense").toLocalDate();
                 int userId = rs.getInt("user_id");
-                boolean isPaid = rs.getBoolean("isPaid_expense");
+                int isPaid = rs.getInt("isPaid_expense");
                 int categoryId = rs.getInt("category_id");
                 int paymentMethodId = rs.getInt("payment_method_id");
                 Expense expense = new Expense(id_expense, description, value, date, userId, isPaid, categoryId, paymentMethodId);

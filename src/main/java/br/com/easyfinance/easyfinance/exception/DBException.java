@@ -1,6 +1,6 @@
 package br.com.easyfinance.easyfinance.exception;
 
-public class DBException extends Exception {
+public class DBException extends RuntimeException {
   public DBException() {
   }
 

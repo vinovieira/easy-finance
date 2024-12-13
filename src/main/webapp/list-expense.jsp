@@ -94,6 +94,7 @@
             </div>
             <div class="modal-body">
                 <form action="expense?action=create" method="post">
+                    <input type="hidden" value="${user.getId()}" name="user-id">
                     <div class="form-group mb-3">
                         <label for="id-description">Descrição</label>
                         <input type="text" name="description" id="id-description" class="form-control">
@@ -106,9 +107,9 @@
                         <label for="id-date">Data da Despesa</label>
                         <input type="date" name="date" id="id-date" class="form-control">
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="id-ispaid">Pago</label>
-                        <input type="checkbox" name="paid" id="id-ispaid" class="form-control">
+                    <div class="form-check">
+                        <input type="checkbox" name="is-paid" id="id-ispaid" class="form-check-input" value="1">
+                        <label for="id-ispaid" class="form-check-label">Pago</label>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-category">Categoria</label>

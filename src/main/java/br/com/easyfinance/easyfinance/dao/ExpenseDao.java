@@ -10,5 +10,5 @@ public interface ExpenseDao {
     void update(Expense expense) throws DBException;
     void delete(Integer id) throws DBException;
     Expense read(Integer id);
-    List<Expense> list();
+    List<Expense> list(int uId) throws DBException;
 }

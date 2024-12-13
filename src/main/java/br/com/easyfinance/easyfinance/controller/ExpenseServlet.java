@@ -1,5 +1,6 @@
 package br.com.easyfinance.easyfinance.controller;
 
+import br.com.easyfinance.easyfinance.model.User;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import br.com.easyfinance.easyfinance.dao.ExpenseDao;
 import br.com.easyfinance.easyfinance.exception.DBException;
 import br.com.easyfinance.easyfinance.factory.DaoFactory;
 import br.com.easyfinance.easyfinance.model.Expense;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -28,19 +30,19 @@ public class ExpenseServlet extends HttpServlet {
         String action = req.getParameter("action");
 
         switch (action) {
-            case ("cadastrar"):
-                cadastrar(req, resp);
+            case ("create"):
+                create(req, resp);
                 break;
-            case ("editar"):
-                editar(req, resp);
+            case ("update"):
+                update(req, resp);
                 break;
-            case ("excluir"):
-                excluir(req, resp);
+            case ("delete"):
+                delete(req, resp);
         }
 
     }
 
-    private void excluir(HttpServletRequest req, HttpServletResponse resp)
+    private void delete(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("idExcluir"));
         try {
@@ -53,7 +55,7 @@ public class ExpenseServlet extends HttpServlet {
         list(req, resp);
     }
 
-    private void cadastrar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void create(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             String description = req
                     .getParameter("description");
@@ -62,13 +64,13 @@ public class ExpenseServlet extends HttpServlet {
             LocalDate date = LocalDate
                     .parse(req.getParameter("date"));
             int userId = Integer
-                    .parseInt(req.getParameter("userId"));
-            boolean isPaid = Boolean
-                    .parseBoolean(req.getParameter("isPaid"));
+                    .parseInt(req.getParameter("user-id"));
+            int isPaid = Integer
+                    .parseInt(req.getParameter("is-paid"));
             int categoryId = Integer
-                    .parseInt(req.getParameter("categoryId"));
+                    .parseInt(req.getParameter("category"));
             int paymentMethodId = Integer
-                    .parseInt(req.getParameter("paymentMethodId"));
+                    .parseInt(req.getParameter("payment"));
 
             Expense expense = new Expense(
                     0,
@@ -87,7 +89,7 @@ public class ExpenseServlet extends HttpServlet {
 
         } catch (DBException db) {
             db.printStackTrace();
-            req.setAttribute("erro", "Erro ao cadastrar");
+            req.setAttribute("erro", "Erro ao create");
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("erro", "Por favor, valide os dados");
@@ -96,7 +98,7 @@ public class ExpenseServlet extends HttpServlet {
         list(req,resp);
     }
 
-    private void editar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             int id = Integer
                     .parseInt(req.getParameter("id"));
@@ -108,8 +110,8 @@ public class ExpenseServlet extends HttpServlet {
                     .parse(req.getParameter("date"));
             int userId = Integer
                     .parseInt(req.getParameter("userId"));
-            boolean isPaid = Boolean
-                    .parseBoolean(req.getParameter("isPaid"));
+            int isPaid = Integer
+                    .parseInt(req.getParameter("is-paid"));
             int categoryId = Integer
                     .parseInt(req.getParameter("categoryId"));
             int paymentMethodId = Integer
@@ -159,14 +161,18 @@ public class ExpenseServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         Expense expense = dao.read(id);
         req.setAttribute("expense", expense);
-//        req.getRequestDispatcher("editar-expense.jsp")
+//        req.getRequestDispatcher("update-expense.jsp")
 //                .forward(req, resp);
         req.setAttribute("showModal", true);
         list(req, resp);
     }
 
     private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Expense> list = dao.list();
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        int userId = user.getId();
+
+        List<Expense> list = dao.list(userId);
         req.setAttribute("expenses", list);
         req.getRequestDispatcher("list-expense.jsp")
                 .forward(req, resp);
