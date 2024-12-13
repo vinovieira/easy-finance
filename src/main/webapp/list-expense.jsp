@@ -65,7 +65,7 @@
                                     <c:param name="action" value="open-update-form"/>
                                     <c:param name="id" value="${expense.id}"/>
                                 </c:url>
-<%--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAtualizarDespesa" onclick="${link}">--%>
+<%--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdateExpense" onclick="${link}">--%>
 <%--                                    Editar--%>
 <%--                                </button>--%>
                                 <a href="${link}" class="btn btn-primary">Editar</a>
@@ -178,17 +178,18 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalAtualizarDespesa" tabindex="-1" aria-labelledby="modalAtualizarDespesaLabel" aria-hidden="true">
+<div class="modal fade" id="modalUpdateExpense" tabindex="-1" aria-labelledby="modalUpdateExpenseLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalAtualizarDespesaLabel">Atualizar Despesa</h5>
+                <h5 class="modal-title" id="modalUpdateExpenseLabel">Atualizar Despesa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="expense" method="post">
                     <input type="hidden" value="update" name="action">
                     <input type="hidden" value="${expense.id}" name="id">
+                    <input type="hidden" value="${user.getId()}" name="user-id">
 
                     <div class="form-group mb-3">
                         <label for="id-update-description">Nome</label>
@@ -202,17 +203,21 @@
                         <label for="id-update-date">Data da Despesa</label>
                         <input type="date" name="date" id="id-update-date" class="form-control" value="${expense.date}">
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="id-update-payment-method">Forma de Pagamento</label>
-                        <input type="text" name="pagamento" id="id-update-payment-method" class="form-control" value="${expense.pagamento}">
+                    <div class="form-check">
+                        <input type="checkbox" name="is-paid" id="id-update-ispaid" class="form-check-input" value="${expense.isPaid}">
+                        <label for="id-update-ispaid" class="form-check-label">Pago</label>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-category">Categoria</label>
-                        <input type="text" name="category" id="id-update-category" class="form-control" value="${expense.category}">
+                        <input type="text" name="category" id="id-update-category" class="form-control" value="${expense.categoryId}">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="id-update-payment-method">Forma de Pagamento</label>
+                        <input type="text" name="payment" id="id-update-payment-method" class="form-control" value="${expense.paymentMethodId}">
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salvar</button>
-                        <a href="expense?action=listar" class="btn btn-warning">Cancelar</a>
+                        <a href="expense?action=list" class="btn btn-warning">Cancelar</a>
                     </div>
                 </form>
             </div>
@@ -223,8 +228,10 @@
 <script src="resources/js/bootstrap.bundle.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        <% if (request.getAttribute("mostrarModal") != null && (boolean) request.getAttribute("mostrarModal")) { %>
-        const modal = new bootstrap.Modal(document.getElementById('modalAtualizarDespesa'));
+        console.log("DOM Loaded");
+        <% if (request.getAttribute("showModal") != null && (boolean) request.getAttribute("showModal")) { %>
+        console.log("showModal = true");
+        const modal = new bootstrap.Modal(document.getElementById('modalUpdateExpense'));
         modal.show();
         <% } %>
     });
