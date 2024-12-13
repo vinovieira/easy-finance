@@ -27,8 +27,8 @@ public class OracleIncomeDao implements IncomeDao {
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, income.getDescription());
-            stmt.setDouble(2, income.getValor());
-            stmt.setDate(3, Date.valueOf(income.getData()));
+            stmt.setDouble(2, income.getValue());
+            stmt.setDate(3, Date.valueOf(income.getDate()));
             stmt.setInt(4, income.getUserId());
             stmt.setString(5, income.getSource());
             stmt.executeUpdate();
@@ -61,8 +61,8 @@ public class OracleIncomeDao implements IncomeDao {
         try {
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, income.getDescription());
-            stmt.setDouble(2, income.getValor());
-            stmt.setDate(3, Date.valueOf(income.getData()));
+            stmt.setDouble(2, income.getValue());
+            stmt.setDate(3, Date.valueOf(income.getDate()));
             stmt.setInt(4, income.getUserId());
             stmt.setString(5, income.getSource());
             stmt.setInt(6, income.getId());

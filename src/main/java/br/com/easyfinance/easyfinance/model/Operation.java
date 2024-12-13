@@ -36,19 +36,19 @@ public abstract class Operation {
         this.description = description;
     }
 
-    public double getValor() {
+    public double getValue() {
         return value;
     }
 
-    public void setValor(double value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
-    public LocalDate getData() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setData(LocalDate date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
