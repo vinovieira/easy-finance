@@ -44,7 +44,7 @@ public class ExpenseServlet extends HttpServlet {
 
     private void delete(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("idExcluir"));
+        int id = Integer.parseInt(req.getParameter("idDelete"));
         try {
             dao.delete(id);
             req.setAttribute("mensagem", "Produto removido!");
@@ -158,17 +158,25 @@ public class ExpenseServlet extends HttpServlet {
     }
 
     private void openUpdateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+
         int id = Integer.parseInt(req.getParameter("id"));
         Expense expense = dao.read(id);
         req.setAttribute("expense", expense);
-//        req.getRequestDispatcher("update-expense.jsp")
-//                .forward(req, resp);
-//        req.getRequestDispatcher("list-expense.jsp").forward(req, resp);
+
+        if (user.getId() != expense.getUserId()){
+            req.setAttribute("erro", "Acesso negado!");
+            list(req, resp);
+            return;
+        }
         req.setAttribute("showModal", true);
+//        req.getRequestDispatcher("list-expense.jsp").forward(req, resp);
         list(req, resp);
     }
 
     private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         int userId = user.getId();
