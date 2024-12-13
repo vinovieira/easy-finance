@@ -151,18 +151,19 @@ public class ExpenseServlet extends HttpServlet {
             case "list":
                 list(req, resp);
                 break;
-            case "open-edit-form":
-                openEditForm(req, resp);
+            case "open-update-form":
+                openUpdateForm(req, resp);
         }
 
     }
 
-    private void openEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void openUpdateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         Expense expense = dao.read(id);
         req.setAttribute("expense", expense);
 //        req.getRequestDispatcher("update-expense.jsp")
 //                .forward(req, resp);
+//        req.getRequestDispatcher("list-expense.jsp").forward(req, resp);
         req.setAttribute("showModal", true);
         list(req, resp);
     }
