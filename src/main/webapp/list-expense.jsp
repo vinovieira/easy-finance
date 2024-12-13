@@ -108,8 +108,14 @@
                         <input type="date" name="date" id="id-date" class="form-control">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" name="is-paid" id="id-ispaid" class="form-check-input" value="1">
-                        <label for="id-ispaid" class="form-check-label">Pago</label>
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="is-paid" value="1" required ${expense.isPaid == 1 ? "checked" : ""}> Pago
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="is-paid" value="0" ${expense.isPaid == 0 ? "checked" : ""}> Não Pago
+                        </label>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-category">Categoria</label>
@@ -204,8 +210,14 @@
                         <input type="date" name="date" id="id-update-date" class="form-control" value="${expense.date}">
                     </div>
                     <div class="form-check">
-                        <input type="checkbox" name="is-paid" id="id-update-ispaid" class="form-check-input" value="${expense.isPaid}">
-                        <label for="id-update-ispaid" class="form-check-label">Pago</label>
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="is-paid" value="1" required ${expense.isPaid == 1 ? "checked" : ""}> Pago
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="is-paid" value="0" ${expense.isPaid == 0 ? "checked" : ""}> Não Pago
+                        </label>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-category">Categoria</label>

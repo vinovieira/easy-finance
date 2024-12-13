@@ -109,16 +109,16 @@ public class ExpenseServlet extends HttpServlet {
             LocalDate date = LocalDate
                     .parse(req.getParameter("date"));
             int userId = Integer
-                    .parseInt(req.getParameter("userId"));
+                    .parseInt(req.getParameter("user-id"));
             int isPaid = Integer
                     .parseInt(req.getParameter("is-paid"));
             int categoryId = Integer
-                    .parseInt(req.getParameter("categoryId"));
+                    .parseInt(req.getParameter("category"));
             int paymentMethodId = Integer
-                    .parseInt(req.getParameter("paymentMethodId"));
+                    .parseInt(req.getParameter("payment"));
 
             Expense expense = new Expense(
-                    0,
+                    id,
                     description,
                     value,
                     date,
