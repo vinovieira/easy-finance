@@ -10,5 +10,5 @@ public interface IncomeDao {
     void update(Income income) throws DBException;
     void delete(Integer id) throws DBException;
     Income read(Integer id);
-    List<Income> list();
+    List<Income> list(Integer uId);
 }

@@ -140,15 +140,16 @@ public class OracleIncomeDao implements IncomeDao {
     }
 
     @Override
-    public List<Income> list() {
+    public List<Income> list(Integer uId) {
         List<Income> lista = new ArrayList<Income>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             conexao = ConnectionManager.getInstance().getConnection();
-            String sql = "SELECT * FROM T_EF_INCOME";
+            String sql = "SELECT * FROM T_EF_INCOME WHERE user_id = ?";
             stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, uId);
             rs = stmt.executeQuery();
 
             //Percorre todos os registros encontrados

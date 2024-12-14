@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.time.LocalDate"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
@@ -53,7 +53,7 @@
                                         var="dateFmt" />
                                 <fmt:formatDate
                                         value="${dateFmt}"
-                                        pattern="dd-MM-yyyy" />
+                                        pattern="dd/MM/yyyy" />
                             </td>
                             <td class="text-end">${income.source}</td>
 
@@ -91,6 +91,7 @@
             </div>
             <div class="modal-body">
                 <form action="income?action=create" method="post">
+                    <input type="hidden" name="user-id" value="${user.getId()}">
                     <div class="form-group mb-3">
                         <label for="id-description">Descrição</label>
                         <input type="text" name="description" id="id-description" class="form-control">
@@ -101,7 +102,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-date">Data</label>
-                        <input type="date" name="date" id="id-date" class="form-control">
+                        <input type="date" name="date" id="id-date" class="form-control" value="${LocalDate.now()}">
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-source">Fonte</label>
@@ -177,6 +178,7 @@
                 <form action="income" method="post">
                     <input type="hidden" value="update" name="action">
                     <input type="hidden" value="${income.id}" name="id">
+                    <input type="hidden" name="user-id" value="${user.getId()}">
 
                     <div class="form-group mb-3">
                         <label for="id-update-description">Nome</label>

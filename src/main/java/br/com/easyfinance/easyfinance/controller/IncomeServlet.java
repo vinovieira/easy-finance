@@ -4,19 +4,21 @@ import br.com.easyfinance.easyfinance.dao.IncomeDao;
 import br.com.easyfinance.easyfinance.exception.DBException;
 import br.com.easyfinance.easyfinance.factory.DaoFactory;
 import br.com.easyfinance.easyfinance.model.Income;
+import br.com.easyfinance.easyfinance.model.User;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet("/income")
-public class ReceitaServlet extends HttpServlet {
+public class IncomeServlet extends HttpServlet {
 
     private IncomeDao dao;
 
@@ -60,7 +62,7 @@ public class ReceitaServlet extends HttpServlet {
             LocalDate date = LocalDate
                     .parse(req.getParameter("date"));
             int userId = Integer
-                    .parseInt(req.getParameter("userId"));
+                    .parseInt(req.getParameter("user-id"));
             String source = req
                     .getParameter("source");
 
@@ -98,7 +100,7 @@ public class ReceitaServlet extends HttpServlet {
             LocalDate date = LocalDate
                     .parse(req.getParameter("date"));
             int userId = Integer
-                    .parseInt(req.getParameter("userId"));
+                    .parseInt(req.getParameter("user-id"));
             String source = req
                     .getParameter("source");
 
@@ -151,7 +153,11 @@ public class ReceitaServlet extends HttpServlet {
     }
 
     private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Income> list = dao.list();
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        int userId = user.getId();
+
+        List<Income> list = dao.list(userId);
         req.setAttribute("incomes", list);
         req.getRequestDispatcher("list-income.jsp")
                 .forward(req, resp);
