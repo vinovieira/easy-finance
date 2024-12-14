@@ -97,11 +97,11 @@
                     <input type="hidden" value="${user.getId()}" name="user-id">
                     <div class="form-group mb-3">
                         <label for="id-description">Descrição</label>
-                        <input type="text" name="description" id="id-description" class="form-control">
+                        <input type="text" name="description" id="id-description" class="form-control" placeholder="Conta de Luz Casa" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-value">Valor</label>
-                        <input type="text" name="value" id="id-value" class="form-control">
+                        <input type="text" name="value" id="id-value" class="form-control" placeholder="560.45" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-date">Data da Despesa</label>
@@ -119,11 +119,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-category">Categoria</label>
-                        <input type="text" name="category" id="id-category" class="form-control">
+                        <input type="text" name="category" id="id-category" class="form-control" placeholder="1-Alimentação / 2-Transporte ..." required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-payment-method">Forma de Pagamento</label>
-                        <input type="text" name="payment" id="id-payment-method" class="form-control">
+                        <input type="text" name="payment" id="id-payment-method" class="form-control" placeholder="1-Cartão de Crédito / 2-Dinheiro ..." required>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
@@ -194,20 +194,20 @@
             <div class="modal-body">
                 <form action="expense" method="post">
                     <input type="hidden" value="update" name="action">
-                    <input type="hidden" value="${expense.id}" name="id">
-                    <input type="hidden" value="${user.getId()}" name="user-id">
+                    <input type="hidden" value="${expense.id}" name="id" required>
+                    <input type="hidden" value="${user.getId()}" name="user-id" required>
 
                     <div class="form-group mb-3">
                         <label for="id-update-description">Nome</label>
-                        <input type="text" name="description" id="id-update-description" class="form-control" value="${expense.description}">
+                        <input type="text" name="description" id="id-update-description" class="form-control" value="${expense.description}" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-value">Valor</label>
-                        <input type="text" name="value" id="id-update-value" class="form-control" value="${expense.value}">
+                        <input type="text" name="value" id="id-update-value" class="form-control" value="${expense.value}" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-date">Data da Despesa</label>
-                        <input type="date" name="date" id="id-update-date" class="form-control" value="${expense.date}">
+                        <input type="date" name="date" id="id-update-date" class="form-control" value="${expense.date}" required>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
@@ -221,11 +221,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-category">Categoria</label>
-                        <input type="text" name="category" id="id-update-category" class="form-control" value="${expense.categoryId}">
+                        <input type="text" name="category" id="id-update-category" class="form-control" value="${expense.categoryId}" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-payment-method">Forma de Pagamento</label>
-                        <input type="text" name="payment" id="id-update-payment-method" class="form-control" value="${expense.paymentMethodId}">
+                        <input type="text" name="payment" id="id-update-payment-method" class="form-control" value="${expense.paymentMethodId}" required>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salvar</button>

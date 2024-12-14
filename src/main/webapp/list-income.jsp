@@ -91,14 +91,14 @@
             </div>
             <div class="modal-body">
                 <form action="income?action=create" method="post">
-                    <input type="hidden" name="user-id" value="${user.getId()}">
+                    <input type="hidden" name="user-id" value="${user.getId()}" required>
                     <div class="form-group mb-3">
-                        <label for="id-description">Descrição</label>
-                        <input type="text" name="description" id="id-description" class="form-control">
+                        <label for="id-description">Descrição</label> required
+                        <input type="text" name="description" id="id-description" class="form-control" placeholder="Salário" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-value">Valor</label>
-                        <input type="text" name="value" id="id-value" class="form-control">
+                        <input type="text" name="value" id="id-value" class="form-control" placeholder="12950.67" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-date">Data</label>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-source">Fonte</label>
-                        <input type="text" name="source" id="id-source" class="form-control">
+                        <input type="text" name="source" id="id-source" class="form-control" placeholder="Google" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
@@ -177,24 +177,24 @@
             <div class="modal-body">
                 <form action="income" method="post">
                     <input type="hidden" value="update" name="action">
-                    <input type="hidden" value="${income.id}" name="id">
-                    <input type="hidden" name="user-id" value="${user.getId()}">
+                    <input type="hidden" value="${income.id}" name="id" required>
+                    <input type="hidden" name="user-id" value="${user.getId()}" required>
 
                     <div class="form-group mb-3">
                         <label for="id-update-description">Nome</label>
-                        <input type="text" name="description" id="id-update-description" class="form-control" value="${income.description}">
+                        <input type="text" name="description" id="id-update-description" class="form-control" value="${income.description}" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-value">Valor</label>
-                        <input type="text" name="value" id="id-update-value" class="form-control" value="${income.value}">
+                        <input type="text" name="value" id="id-update-value" class="form-control" value="${income.value}" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-date">Data</label>
-                        <input type="date" name="date" id="id-update-date" class="form-control" value="${income.date}">
+                        <input type="date" name="date" id="id-update-date" class="form-control" value="${income.date}" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-update-source">Fonte</label>
-                        <input type="text" name="source" id="id-update-source" class="form-control" value="${income.source}">
+                        <input type="text" name="source" id="id-update-source" class="form-control" value="${income.source}" required>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salvar</button>
