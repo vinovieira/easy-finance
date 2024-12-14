@@ -10,11 +10,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="fix: delete expense">
+    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="fix: expense crud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleExpenseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleExpenseDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/IncomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/IncomeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/IncomeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleIncomeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/impl/OracleIncomeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,7 +351,8 @@
       <workItem from="1733950404447" duration="15539000" />
       <workItem from="1734025310754" duration="21054000" />
       <workItem from="1734055056270" duration="6770000" />
-      <workItem from="1734119036373" duration="12829000" />
+      <workItem from="1734119036373" duration="13793000" />
+      <workItem from="1734195169246" duration="4625000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -447,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734126683621</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix: expense crud">
+      <option name="closed" value="true" />
+      <created>1734133029793</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1734133029793</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +503,8 @@
     <MESSAGE value="feat: create and list expenses by user id" />
     <MESSAGE value="feat: update expense" />
     <MESSAGE value="fix: delete expense" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: delete expense" />
+    <MESSAGE value="fix: expense crud" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: expense crud" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

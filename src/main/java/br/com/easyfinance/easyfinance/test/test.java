@@ -7,6 +7,7 @@ import br.com.easyfinance.easyfinance.factory.DaoFactory;
 import br.com.easyfinance.easyfinance.model.Expense;
 import br.com.easyfinance.easyfinance.model.User;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class test {
@@ -20,6 +21,11 @@ public class test {
         List<Expense> lista = expenseDao.list(1);
         for (Expense e : lista) {
             System.out.println(e);
+        System.out.println("==================================");
+        LocalDate teste = LocalDate.now();
+            System.out.println(teste);
+
+
         }
     }
 }
