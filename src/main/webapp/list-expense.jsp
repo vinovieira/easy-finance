@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.time.LocalDate" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
@@ -105,7 +106,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="id-date">Data da Despesa</label>
-                        <input type="date" name="date" id="id-date" class="form-control">
+                        <input type="date" name="date" id="id-date" class="form-control" value="${LocalDate.now()}">
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
