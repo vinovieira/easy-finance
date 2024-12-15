@@ -118,15 +118,24 @@
                             <input type="radio" class="form-check-input" name="is-paid" value="0" ${expense.isPaid == 0 ? "checked" : ""}> Não Pago
                         </label>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="category" id="id-category" required aria-label="Floating label select example">
+                            <option selected>Selecione...</option>
+                            <c:forEach items="${categoryList}" var="category">
+                            <option value="${category.id}">${category.name}</option>
+                            </c:forEach>
+                        </select>
                         <label for="id-category">Categoria</label>
-                        <input type="text" name="category" id="id-category" class="form-control" placeholder="1-Alimentação / 2-Transporte ..." required>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="payment" id="id-payment-method" required aria-label="Floating label select example">
+                            <option selected>Selecione...</option>
+                            <c:forEach items="${paymentMethodList}" var="paymentMethod">
+                                <option value="${paymentMethod.id}">${paymentMethod.name}</option>
+                            </c:forEach>
+                        </select>
                         <label for="id-payment-method">Forma de Pagamento</label>
-                        <input type="text" name="payment" id="id-payment-method" class="form-control" placeholder="1-Cartão de Crédito / 2-Dinheiro ..." required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
@@ -220,13 +229,23 @@
                             <input type="radio" class="form-check-input" name="is-paid" value="0" ${expense.isPaid == 0 ? "checked" : ""}> Não Pago
                         </label>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="category" id="id-update-category" required aria-label="Floating label select example">
+                            <option>Selecione...</option>
+                            <c:forEach items="${categoryList}" var="category">
+                                <option value="${category.id}" ${expense.categoryId == category.id ? "selected" : ""} >${category.name}</option>
+                            </c:forEach>
+                        </select>
                         <label for="id-update-category">Categoria</label>
-                        <input type="text" name="category" id="id-update-category" class="form-control" value="${expense.categoryId}" required>
                     </div>
-                    <div class="form-group mb-3">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="payment" id="id-update-payment-method" required aria-label="Floating label select example">
+                            <option>Selecione...</option>
+                            <c:forEach items="${paymentMethodList}" var="paymentMethod">
+                                <option value="${paymentMethod.id}" ${expense.paymentMethodId == paymentMethod.id ? "selected" : ""} >${paymentMethod.name}</option>
+                            </c:forEach>
+                        </select>
                         <label for="id-update-payment-method">Forma de Pagamento</label>
-                        <input type="text" name="payment" id="id-update-payment-method" class="form-control" value="${expense.paymentMethodId}" required>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Salvar</button>

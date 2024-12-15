@@ -1,5 +1,9 @@
 package br.com.easyfinance.easyfinance.controller;
 
+import br.com.easyfinance.easyfinance.dao.CategoryDao;
+import br.com.easyfinance.easyfinance.dao.PaymentMethodDao;
+import br.com.easyfinance.easyfinance.model.Category;
+import br.com.easyfinance.easyfinance.model.PaymentMethod;
 import br.com.easyfinance.easyfinance.model.User;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
@@ -22,6 +26,8 @@ import java.util.List;
 public class ExpenseServlet extends HttpServlet {
 
     private ExpenseDao dao;
+    private CategoryDao categoryDao;
+    private PaymentMethodDao paymentMethodDao;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -181,8 +187,15 @@ public class ExpenseServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         int userId = user.getId();
 
+        List<PaymentMethod> paymentMethodList = paymentMethodDao.list();
+        req.setAttribute("paymentMethodList", paymentMethodList);
+
+        List<Category> categoryList = categoryDao.list();
+        req.setAttribute("categoryList", categoryList);
+
         List<Expense> list = dao.list(userId);
         req.setAttribute("expenses", list);
+
         req.getRequestDispatcher("list-expense.jsp")
                 .forward(req, resp);
     }
@@ -192,6 +205,7 @@ public class ExpenseServlet extends HttpServlet {
 
         super.init(config);
         dao = DaoFactory.getExpenseDao();
-
+        categoryDao = DaoFactory.getCategoryDao();
+        paymentMethodDao = DaoFactory.getPaymentMethodDao();
     }
 }
