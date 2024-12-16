@@ -55,7 +55,7 @@
                                         var="dateFmt" />
                                 <fmt:formatDate
                                         value="${dateFmt}"
-                                        pattern="dd-MM-yyyy" />
+                                        pattern="dd/MM/yyyy" />
                             </td>
                             <td class="text-end">${expense.isPaid}</td>
                             <td class="text-end">${expense.categoryId}</td>
@@ -108,16 +108,22 @@
                         <label for="id-date">Data da Despesa</label>
                         <input type="date" name="date" id="id-date" class="form-control" value="${LocalDate.now()}">
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="is-paid" value="1" required ${expense.isPaid == 1 ? "checked" : ""}> Pago
-                        </label>
+                    <div class="form-check form-switch mb-3">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                role="switch"
+                                id="switch-ispaid-create"
+                                onchange="updateSwitchValue(this)">
+                        <label class="form-check-label" for="switch-ispaid-create">Pago</label>
+                        <input type="hidden" name="is-paid" id="switchCreateHiddenInput" value="0">
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="is-paid" value="0" ${expense.isPaid == 0 ? "checked" : ""}> Não Pago
-                        </label>
-                    </div>
+                    <script>
+                        function updateSwitchValue(switchElement) {
+                            const value = switchElement.checked ? 1 : 0;
+                            document.getElementById('switchCreateHiddenInput').value = value;
+                        }
+                    </script>
                     <div class="form-floating mb-3">
                         <select class="form-select" name="category" id="id-category" required aria-label="Floating label select example">
                             <option selected>Selecione...</option>
@@ -136,6 +142,7 @@
                         </select>
                         <label for="id-payment-method">Forma de Pagamento</label>
                     </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
@@ -219,16 +226,23 @@
                         <label for="id-update-date">Data da Despesa</label>
                         <input type="date" name="date" id="id-update-date" class="form-control" value="${expense.date}" required>
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="is-paid" value="1" required ${expense.isPaid == 1 ? "checked" : ""}> Pago
-                        </label>
+                    <div class="form-check form-switch mb-3">
+                        <input
+                                class="form-check-input"
+                                type="checkbox"
+                                role="switch"
+                                id="flexSwitchCheckDefault"
+                                onchange="updateSwitchValue(this)"
+                                ${expense.isPaid == 1 ? "checked" : ""}>
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Pago</label>
+                        <input type="hidden" name="is-paid" id="switchHiddenInput" ${expense.isPaid == 1 ? "value='1'" : "value='0'"}>
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="is-paid" value="0" ${expense.isPaid == 0 ? "checked" : ""}> Não Pago
-                        </label>
-                    </div>
+                    <script>
+                        function updateSwitchValue(switchElement) {
+                            const value = switchElement.checked ? 1 : 0;
+                            document.getElementById('switchHiddenInput').value = value;
+                        }
+                    </script>
                     <div class="form-floating mb-3">
                         <select class="form-select" name="category" id="id-update-category" required aria-label="Floating label select example">
                             <option>Selecione...</option>
