@@ -36,3 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+src/main/java/br/com/easyfinance/easyfinance/dao/ConnectionManager.java
