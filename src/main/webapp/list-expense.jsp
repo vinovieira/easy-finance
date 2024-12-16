@@ -38,7 +38,7 @@
                         <th>Descrição</th>
                         <th class="text-end">Valor</th>
                         <th class="text-end">Data</th>
-                        <th>Pago</th>
+                        <th class="text-center">Pago</th>
                         <th class="text-center">Categoria</th>
                         <th class="text-center">Forma de Pagamento</th>
                     </tr>
@@ -48,7 +48,7 @@
                         <tr>
                             <td>${expense.description}</td>
                             <td class="text-end">${expense.value}</td>
-                            <td class="text-center">
+                            <td class="text-end">
                                 <fmt:parseDate
                                         value="${expense.date}"
                                         pattern="yyyy-MM-dd"
@@ -57,20 +57,28 @@
                                         value="${dateFmt}"
                                         pattern="dd/MM/yyyy" />
                             </td>
-                            <td class="text-end">${expense.isPaid}</td>
-                            <td class="text-end">${expense.categoryId}</td>
-                            <td class="text-end">${expense.paymentMethodId}</td>
+                            <td class="text-center">
+                                <div class="text-center form-switch">
+                                    <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            role="switch"
+                                            id="switch-ispaid-list"
+                                            disabled
+                                            ${expense.isPaid == 1 ? "checked" : ""}>
+<%--                                    <label class="form-check-label" for="switch-ispaid-list"></label>--%>
+                                </div>
+                            </td>
+                            <td class="text-center">${expense.category.name}</td>
+                            <td class="text-center">${expense.paymentMethod.name}</td>
 
                             <td class="text-center">
                                 <c:url value="expense" var="link">
                                     <c:param name="action" value="open-update-form"/>
                                     <c:param name="id" value="${expense.id}"/>
                                 </c:url>
-<%--                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdateExpense" onclick="${link}">--%>
-<%--                                    Editar--%>
-<%--                                </button>--%>
-                                <a href="${link}" class="btn btn-primary">Editar</a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="idDelete.value = ${expense.id}">
+                                <a href="${link}" class="btn btn-outline-warning btn-sm">Editar</a>
+                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="idDelete.value = ${expense.id}">
                                     Exluir
                                 </button>
                             </td>
@@ -231,23 +239,23 @@
                                 class="form-check-input"
                                 type="checkbox"
                                 role="switch"
-                                id="flexSwitchCheckDefault"
+                                id="switch-ispaid-update"
                                 onchange="updateSwitchValue(this)"
                                 ${expense.isPaid == 1 ? "checked" : ""}>
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Pago</label>
-                        <input type="hidden" name="is-paid" id="switchHiddenInput" ${expense.isPaid == 1 ? "value='1'" : "value='0'"}>
+                        <label class="form-check-label" for="switch-ispaid-update">Pago</label>
+                        <input type="hidden" name="is-paid" id="switchUpdateHiddenInput" ${expense.isPaid == 1 ? "value='1'" : "value='0'"}>
                     </div>
                     <script>
                         function updateSwitchValue(switchElement) {
                             const value = switchElement.checked ? 1 : 0;
-                            document.getElementById('switchHiddenInput').value = value;
+                            document.getElementById('switchUpdateHiddenInput').value = value;
                         }
                     </script>
                     <div class="form-floating mb-3">
                         <select class="form-select" name="category" id="id-update-category" required aria-label="Floating label select example">
                             <option>Selecione...</option>
                             <c:forEach items="${categoryList}" var="category">
-                                <option value="${category.id}" ${expense.categoryId == category.id ? "selected" : ""} >${category.name}</option>
+                                <option value="${category.id}" ${expense.category.id == category.id ? "selected" : ""} >${category.name}</option>
                             </c:forEach>
                         </select>
                         <label for="id-update-category">Categoria</label>
@@ -256,7 +264,7 @@
                         <select class="form-select" name="payment" id="id-update-payment-method" required aria-label="Floating label select example">
                             <option>Selecione...</option>
                             <c:forEach items="${paymentMethodList}" var="paymentMethod">
-                                <option value="${paymentMethod.id}" ${expense.paymentMethodId == paymentMethod.id ? "selected" : ""} >${paymentMethod.name}</option>
+                                <option value="${paymentMethod.id}" ${expense.paymentMethod.id == paymentMethod.id ? "selected" : ""} >${paymentMethod.name}</option>
                             </c:forEach>
                         </select>
                         <label for="id-update-payment-method">Forma de Pagamento</label>

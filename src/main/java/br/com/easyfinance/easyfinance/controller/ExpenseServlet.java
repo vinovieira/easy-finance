@@ -30,6 +30,15 @@ public class ExpenseServlet extends HttpServlet {
     private PaymentMethodDao paymentMethodDao;
 
     @Override
+    public void init(ServletConfig config) throws ServletException {
+
+        super.init(config);
+        dao = DaoFactory.getExpenseDao();
+        categoryDao = DaoFactory.getCategoryDao();
+        paymentMethodDao = DaoFactory.getPaymentMethodDao();
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
@@ -84,10 +93,16 @@ public class ExpenseServlet extends HttpServlet {
                     value,
                     date,
                     userId,
-                    isPaid,
-                    categoryId,
-                    paymentMethodId
+                    isPaid
             );
+
+            Category category = new Category();
+            category.setId(categoryId);
+            expense.setCategory(category);
+
+            PaymentMethod paymentMethod = new PaymentMethod();
+            paymentMethod.setId(paymentMethodId);
+            expense.setPaymentMethod(paymentMethod);
 
             dao.create(expense);
 
@@ -129,10 +144,16 @@ public class ExpenseServlet extends HttpServlet {
                     value,
                     date,
                     userId,
-                    isPaid,
-                    categoryId,
-                    paymentMethodId
+                    isPaid
             );
+
+            Category category = new Category();
+            category.setId(categoryId);
+            expense.setCategory(category);
+
+            PaymentMethod paymentMethod = new PaymentMethod();
+            paymentMethod.setId(paymentMethodId);
+            expense.setPaymentMethod(paymentMethod);
 
             dao.update(expense);
 
@@ -198,14 +219,5 @@ public class ExpenseServlet extends HttpServlet {
 
         req.getRequestDispatcher("list-expense.jsp")
                 .forward(req, resp);
-    }
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-
-        super.init(config);
-        dao = DaoFactory.getExpenseDao();
-        categoryDao = DaoFactory.getCategoryDao();
-        paymentMethodDao = DaoFactory.getPaymentMethodDao();
     }
 }

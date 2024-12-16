@@ -4,17 +4,15 @@ import java.time.LocalDate;
 
 public class Expense extends Operation {
     private Integer isPaid;
-    private Integer categoryId;
-    private Integer paymentMethodId;
+    private Category category;
+    private PaymentMethod paymentMethod;
 
     public Expense() {
     }
 
-    public Expense(Integer id, String description, double value, LocalDate date, Integer userId, Integer isPaid, Integer categoryId, Integer paymentMethodId) {
+    public Expense(Integer id, String description, double value, LocalDate date, Integer userId, Integer isPaid) {
         super(id, description, value, date, userId);
         this.isPaid = isPaid;
-        this.categoryId = categoryId;
-        this.paymentMethodId = paymentMethodId;
     }
 
     public Integer getIsPaid() {
@@ -25,28 +23,32 @@ public class Expense extends Operation {
         this.isPaid = isPaid;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public void setIsPaid(Integer isPaid) {
+        this.isPaid = isPaid;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public Integer getPaymentMethodId() {
-        return paymentMethodId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public void setPaymentMethodId(Integer paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     @Override
     public String toString() {
         return "Expense{" +
                 "getIsPaid=" + isPaid +
-                ", categoryId=" + categoryId +
-                ", paymentMethodId=" + paymentMethodId +
+                ", categoryId=" + category.getId() +
+                ", paymentMethodId=" + paymentMethod.getId() +
                 '}';
     }
 }

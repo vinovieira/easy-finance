@@ -1,8 +1,10 @@
 package br.com.easyfinance.easyfinance.dao.impl;
 import br.com.easyfinance.easyfinance.dao.ConnectionManager;
 import br.com.easyfinance.easyfinance.dao.ExpenseDao;
+import br.com.easyfinance.easyfinance.model.Category;
 import br.com.easyfinance.easyfinance.model.Expense;
 import br.com.easyfinance.easyfinance.exception.DBException;
+import br.com.easyfinance.easyfinance.model.PaymentMethod;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -30,8 +32,8 @@ public class OracleExpenseDao implements ExpenseDao {
             stmt.setDate(3, Date.valueOf(expense.getDate()));
             stmt.setInt(4, expense.getUserId());
             stmt.setInt(5, expense.getIsPaid());
-            stmt.setInt(6, expense.getCategoryId());
-            stmt.setInt(7, expense.getPaymentMethodId());
+            stmt.setInt(6, expense.getCategory().getId());
+            stmt.setInt(7, expense.getPaymentMethod().getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Erro ao executar SQL: " + e.getMessage());
@@ -68,8 +70,8 @@ public class OracleExpenseDao implements ExpenseDao {
             stmt.setDate(3, Date.valueOf(expense.getDate()));
             stmt.setInt(4, expense.getUserId());
             stmt.setInt(5, expense.getIsPaid());
-            stmt.setInt(6, expense.getCategoryId());
-            stmt.setInt(7, expense.getPaymentMethodId());
+            stmt.setInt(6, expense.getCategory().getId());
+            stmt.setInt(7, expense.getPaymentMethod().getId());
             stmt.setInt(8, expense.getId());
             stmt.executeUpdate();
 
@@ -116,7 +118,11 @@ public class OracleExpenseDao implements ExpenseDao {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {conexao = ConnectionManager.getInstance().getConnection();
-            String sql = "SELECT * FROM T_EF_EXPENSE WHERE id_expense = ?";
+            String sql = "SELECT * FROM T_EF_EXPENSE E INNER JOIN T_EF_CATEGORY C "
+                        + "ON (C.ID_CATEGORY = E.CATEGORY_ID) "
+                        + "INNER JOIN T_EF_PAYMENTMETHOD P "
+                        + "ON (P.ID_PAYMENT_METHOD = E.PAYMENT_METHOD_ID) "
+                        + "WHERE id_expense = ?";
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
@@ -129,8 +135,18 @@ public class OracleExpenseDao implements ExpenseDao {
                 int userId = rs.getInt("user_id");
                 int isPaid = rs.getInt("isPaid_expense");
                 int categoryId = rs.getInt("category_id");
+                String categoryName = rs.getString("nm_category");
                 int paymentMethodId = rs.getInt("payment_method_id");
-                expense = new Expense(id_expense, description, value, date, userId, isPaid, categoryId, paymentMethodId);
+                String paymentMethodName = rs.getString("nm_payment_method");
+
+                expense = new Expense(id_expense, description, value, date, userId, isPaid);
+
+                Category category = new Category(categoryId, categoryName);
+                expense.setCategory(category);
+
+                PaymentMethod paymentMethod = new PaymentMethod(paymentMethodId, paymentMethodName);
+                expense.setPaymentMethod(paymentMethod);
+                // ADICIONAR MAP PARA VERIFICAR SE CATEGORIA JA FOI INSTANCIADA
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -148,14 +164,17 @@ public class OracleExpenseDao implements ExpenseDao {
 
     @Override
     public List<Expense> list(int uId) {
-        List<Expense> lista = new ArrayList<Expense>();
+        List<Expense> list = new ArrayList<Expense>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             conexao = ConnectionManager.getInstance().getConnection();
-            String sql = "SELECT * FROM T_EF_EXPENSE " +
-                    "WHERE user_id= ?";
+            String sql = "SELECT * FROM T_EF_EXPENSE E INNER JOIN T_EF_CATEGORY C "
+                    + "ON (C.ID_CATEGORY = E.CATEGORY_ID) "
+                    + "INNER JOIN T_EF_PAYMENTMETHOD P "
+                    + "ON (P.ID_PAYMENT_METHOD = E.PAYMENT_METHOD_ID) "
+                    + "WHERE user_id = ?";
             stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, uId);
             rs = stmt.executeQuery();
@@ -169,9 +188,19 @@ public class OracleExpenseDao implements ExpenseDao {
                 int userId = rs.getInt("user_id");
                 int isPaid = rs.getInt("isPaid_expense");
                 int categoryId = rs.getInt("category_id");
+                String categoryName = rs.getString("nm_category");
                 int paymentMethodId = rs.getInt("payment_method_id");
-                Expense expense = new Expense(id_expense, description, value, date, userId, isPaid, categoryId, paymentMethodId);
-                lista.add(expense);
+                String paymentMethodName = rs.getString("nm_payment_method");
+
+                Expense expense = new Expense(id_expense, description, value, date, userId, isPaid);
+
+                Category category = new Category(categoryId, categoryName);
+                expense.setCategory(category);
+
+                PaymentMethod paymentMethod = new PaymentMethod(paymentMethodId, paymentMethodName);
+                expense.setPaymentMethod(paymentMethod);
+
+                list.add(expense);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -184,6 +213,6 @@ public class OracleExpenseDao implements ExpenseDao {
                 e.printStackTrace();
             }
         }
-        return lista;
+        return list;
     }
 }
