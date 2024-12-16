@@ -32,7 +32,7 @@
             <div class="card-body table-responsive">
                 <h5 class="card-title">Gestão de Despesas</h5>
                 <p class="card-text">Mantenha suas despesas sob controle!</p>
-                <table class="table table-striped table-bordered">
+                <table class="table">
                     <thead>
                     <tr>
                         <th>Descrição</th>
