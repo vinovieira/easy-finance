@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="easy-finance:war" />
       <artifact name="easy-finance:war exploded" />
     </artifacts-to-build>
   </component>
@@ -10,8 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment="fix: income crud">
+    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment=":sparkles: feat: add dashboard page and its functions">
+      <change afterPath="$PROJECT_DIR$/SCRIPT_DDL_EASYFINANCE.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/SourceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Source.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/OperationClassTeste.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" afterDir="false" />
     </list>
@@ -27,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
-        <option value="Jsp File" />
         <option value="Interface" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -66,7 +72,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -77,33 +83,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.31.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;refactor&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Silvino/Desktop/PROGRAMAÇÃO/PROJETOS/EasyFinance&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.OperationClassTeste.executor": "Run",
+    "Application.test.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 10.1.31.executor": "Run",
+    "Tomcat Server.dashboard.jsp.executor": "Run",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Silvino/Desktop/PROGRAMAÇÃO/PROJETOS/EasyFinance",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;oracle&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Silvino\Desktop\PROGRAMAÇÃO\PROJETOS\EasyFinance\src\main\webapp" />
@@ -119,6 +127,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.31">
+    <configuration name="OperationClassTeste" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.easyfinance.easyfinance.test.OperationClassTeste" />
+      <module name="easy-finance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.easyfinance.easyfinance.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.easyfinance.easyfinance.test.test" />
       <module name="easy-finance" />
@@ -133,12 +154,12 @@
       </method>
     </configuration>
     <configuration name="Tomcat 10.1.31" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.31" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="21">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/easy_finance_war_exploded/home.jsp" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/home.jsp" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="easy-finance:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/easy_finance_war_exploded" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
@@ -314,8 +335,110 @@
         </option>
       </method>
     </configuration>
+    <configuration name="dashboard.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 10.1.31" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="21">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/dashboard.jsp" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="easy-finance:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/easy_finance_war" />
+          </settings>
+        </artifact>
+        <artifact name="easy-finance:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/easy_finance_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="075c501c-a29b-4e81-8bf9-8d29cc6c5c46" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62112" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="easy-finance:war" />
+          <artifact name="easy-finance:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.OperationClassTeste" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.31" />
+      <item itemvalue="Tomcat Server.dashboard.jsp" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.OperationClassTeste" />
+        <item itemvalue="Tomcat Server.dashboard.jsp" />
         <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
@@ -349,7 +472,10 @@
       <workItem from="1734025310754" duration="21054000" />
       <workItem from="1734055056270" duration="6770000" />
       <workItem from="1734119036373" duration="13793000" />
-      <workItem from="1734195169246" duration="6079000" />
+      <workItem from="1734195169246" duration="8176000" />
+      <workItem from="1734226000692" duration="666000" />
+      <workItem from="1734266895766" duration="27603000" />
+      <workItem from="1734357420558" duration="38663000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -463,7 +589,95 @@
       <option name="project" value="LOCAL" />
       <updated>1734201237872</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary=":lipstick: feat: improve inputs">
+      <option name="closed" value="true" />
+      <created>1734202633089</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1734202633089</updated>
+    </task>
+    <task id="LOCAL-00016" summary=".">
+      <option name="closed" value="true" />
+      <created>1734202856915</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1734202856915</updated>
+    </task>
+    <task id="LOCAL-00017" summary=":boom: fix: expense date input">
+      <option name="closed" value="true" />
+      <created>1734267227357</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1734267227357</updated>
+    </task>
+    <task id="LOCAL-00018" summary=":sparkles: feat: add a category dropdown menu for creating and editing expenses">
+      <option name="closed" value="true" />
+      <created>1734296758707</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1734296758707</updated>
+    </task>
+    <task id="LOCAL-00019" summary=":sparkles: feat: add a payment method dropdown menu for creating and editing expenses">
+      <option name="closed" value="true" />
+      <created>1734296793488</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1734296793488</updated>
+    </task>
+    <task id="LOCAL-00020" summary=":sparkles: feat: implements category and payment method dropdown menu for creating and editing expenses">
+      <option name="closed" value="true" />
+      <created>1734296866874</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1734296866874</updated>
+    </task>
+    <task id="LOCAL-00021" summary=":boom: fix: inputs">
+      <option name="closed" value="true" />
+      <created>1734313863109</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1734313863109</updated>
+    </task>
+    <task id="LOCAL-00022" summary=":sparkles: feat: finish expense crud">
+      <option name="closed" value="true" />
+      <created>1734362864662</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1734362864662</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix: .gitignore">
+      <option name="closed" value="true" />
+      <created>1734363391313</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1734363391313</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: adjust table">
+      <option name="closed" value="true" />
+      <created>1734378150337</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1734378150337</updated>
+    </task>
+    <task id="LOCAL-00025" summary=":sparkles: feat: add dashboard page and its functions">
+      <option name="closed" value="true" />
+      <created>1734409507246</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1734409507246</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +724,18 @@
     <MESSAGE value="fix: delete expense" />
     <MESSAGE value="fix: expense crud" />
     <MESSAGE value="fix: income crud" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: income crud" />
+    <MESSAGE value=":lipstick: feat: improve inputs" />
+    <MESSAGE value="." />
+    <MESSAGE value=":boom: fix: expense date input" />
+    <MESSAGE value=":sparkles: feat: add a category dropdown menu for creating and editing expenses" />
+    <MESSAGE value=":sparkles: feat: add a payment method dropdown menu for creating and editing expenses" />
+    <MESSAGE value=":sparkles: feat: implements category and payment method dropdown menu for creating and editing expenses" />
+    <MESSAGE value=":boom: fix: inputs" />
+    <MESSAGE value=":sparkles: feat: finish expense crud" />
+    <MESSAGE value="fix: .gitignore" />
+    <MESSAGE value="feat: adjust table" />
+    <MESSAGE value=":sparkles: feat: add dashboard page and its functions" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: feat: add dashboard page and its functions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
