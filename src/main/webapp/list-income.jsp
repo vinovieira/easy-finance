@@ -171,7 +171,6 @@
         </div>
     </div>
 </div>
-<%@include file="footer.jsp" %>
 <%@include file="modal/modalCreateIncome.jsp"%>
 <%@include file="modal/modalDeleteIncome.jsp"%>
 <%@include file="modal/modalUpdateIncome.jsp"%>
