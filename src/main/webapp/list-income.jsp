@@ -18,7 +18,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.13.6/sorting/currency.js"></script>
 </head>
-<body>
+<body data-bs-theme="light">
 <%@include file="header.jsp" %>
 <div class="container">
     <div class="mt-5 ms-5 me-5">

@@ -1,7 +1,8 @@
-<nav class="navbar bg-dark border-bottom border-body navbar-expand-lg" data-bs-theme="dark">
+<nav class="navbar border-bottom border-body navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp"><i class="fa-light fa-file-invoice-dollar"></i> EasyFinance</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -50,7 +51,47 @@
                    <a href="login" class="btn btn-outline-primary my-2 my-sm-0">Sair</a>
                </span>
             </c:if>
+            <ul class="navbar-nav mx-1 mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button id="toggleTheme" class="btn btn-outline-light border-light text-light ms-auto">
+                        <i id="themeIcon" class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
 
         </div>
     </div>
 </nav>
+<script>
+    const savedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const toggleButton = document.getElementById('toggleTheme');
+    const themeIcon = document.getElementById('themeIcon');
+
+    if (savedTheme === 'dark') {
+        body.setAttribute('data-bs-theme', 'dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+
+    toggleButton.addEventListener('click', () => {
+        const isDarkMode = body.getAttribute('data-bs-theme') === 'dark';
+
+        if (isDarkMode) {
+            body.setAttribute('data-bs-theme', 'light');
+            toggleButton.classList.remove('border-light', 'text-light');
+            toggleButton.classList.add('border-dark', 'text-dark');
+
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-bs-theme', 'dark');
+            toggleButton.classList.remove('border-dark', 'text-dark');
+            toggleButton.classList.add('border-light', 'text-light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>

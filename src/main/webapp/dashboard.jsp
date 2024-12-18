@@ -15,7 +15,7 @@
           integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<body>
+<body data-bs-theme="light">
 <%@include file="header.jsp" %>
 <div class="container">
     <div class="mt-5 ms-md-5 me-md-5">

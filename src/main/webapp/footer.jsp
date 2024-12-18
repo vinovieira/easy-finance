@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<footer class="bg-dark text-light py-4">
+<footer class="py-4">
     <div class="container">
         <div class="row justify-content-evenly">
             <div class="col-md-4">

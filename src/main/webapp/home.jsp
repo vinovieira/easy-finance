@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./resources/css/bootstrap.css">
 </head>
-<body>
+<body data-bs-theme="light">
 <%@include file="header.jsp" %>
 <div class="container">
   <c:if test="${empty user}">
