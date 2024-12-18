@@ -10,16 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment=":sparkles: feat: add dashboard page and its functions">
-      <change afterPath="$PROJECT_DIR$/SCRIPT_DDL_EASYFINANCE.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/SourceDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Source.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/OperationClassTeste.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/dashboard.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,12 +46,12 @@
     &quot;assignee&quot;: &quot;vinovieira&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/vinovieira/easy-finance.git&quot;,
-    &quot;accountId&quot;: &quot;a1a6fcb6-fc6a-4d8b-af1f-03405ad87046&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/vinovieira/easy-finance.git",
+    "accountId": "03ab2279-9ab3-49d0-848d-909b9fd67d60"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -83,35 +81,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.OperationClassTeste.executor": "Run",
-    "Application.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.31.executor": "Run",
-    "Tomcat Server.dashboard.jsp.executor": "Run",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "21",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Silvino/Desktop/PROGRAMAÇÃO/PROJETOS/EasyFinance",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.OperationClassTeste.executor&quot;: &quot;Run&quot;,
+    &quot;Application.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.31.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.dashboard.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Silvino/Desktop/PROGRAMAÇÃO/PROJETOS/EasyFinance&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "oracle"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;oracle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Silvino\Desktop\PROGRAMAÇÃO\PROJETOS\EasyFinance\src\main\webapp" />
@@ -437,9 +435,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.OperationClassTeste" />
         <item itemvalue="Tomcat Server.dashboard.jsp" />
-        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -476,6 +474,7 @@
       <workItem from="1734226000692" duration="666000" />
       <workItem from="1734266895766" duration="27603000" />
       <workItem from="1734357420558" duration="38663000" />
+      <workItem from="1734458820223" duration="22455000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />

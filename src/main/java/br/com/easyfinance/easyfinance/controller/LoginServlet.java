@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 
         if (authenticatedUser != null) {
             HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(3600);
             session.setAttribute("user", authenticatedUser);
 
             String mensagem =

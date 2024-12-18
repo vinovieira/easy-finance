@@ -217,6 +217,12 @@ public class ExpenseServlet extends HttpServlet {
         List<Expense> list = dao.list(userId);
         req.setAttribute("expenses", list);
 
+        double expenseSum = list.stream()
+                .mapToDouble(Expense::getValue)
+                .sum();
+
+        req.setAttribute("expenseSum", expenseSum);
+
         req.getRequestDispatcher("list-expense.jsp")
                 .forward(req, resp);
     }
