@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="easy-finance:war" />
       <artifact name="easy-finance:war exploded" />
     </artifacts-to-build>
   </component>
@@ -9,15 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment=":sparkles: feat: add dashboard page and its functions">
+    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment=":boom: fix: minor adjustments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ExpenseServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/dashboard.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-expense.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/IncomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/IncomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -474,7 +470,7 @@
       <workItem from="1734226000692" duration="666000" />
       <workItem from="1734266895766" duration="27603000" />
       <workItem from="1734357420558" duration="38663000" />
-      <workItem from="1734458820223" duration="22455000" />
+      <workItem from="1734458820223" duration="23830000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -676,7 +672,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734409507246</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary=":boom: fix: minor adjustments">
+      <option name="closed" value="true" />
+      <created>1734490990816</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1734490990817</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -709,7 +713,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="primeiro commit" />
     <MESSAGE value="inserir controle de receita funcional" />
     <MESSAGE value="inserir login, filtro, email de login" />
     <MESSAGE value="refactor: user" />
@@ -734,7 +737,8 @@
     <MESSAGE value="fix: .gitignore" />
     <MESSAGE value="feat: adjust table" />
     <MESSAGE value=":sparkles: feat: add dashboard page and its functions" />
-    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: feat: add dashboard page and its functions" />
+    <MESSAGE value=":boom: fix: minor adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value=":boom: fix: minor adjustments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

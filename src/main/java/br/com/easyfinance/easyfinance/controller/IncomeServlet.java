@@ -158,6 +158,12 @@ public class IncomeServlet extends HttpServlet {
         int userId = user.getId();
 
         List<Income> list = dao.list(userId);
+
+        double incomeSum = list.stream()
+                .mapToDouble(Income::getValue)
+                .sum();
+
+        req.setAttribute("incomeSum", incomeSum);
         req.setAttribute("incomes", list);
         req.getRequestDispatcher("list-income.jsp")
                 .forward(req, resp);
