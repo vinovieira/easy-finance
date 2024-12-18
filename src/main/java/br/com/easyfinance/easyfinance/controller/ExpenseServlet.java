@@ -62,7 +62,7 @@ public class ExpenseServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("idDelete"));
         try {
             dao.delete(id);
-            req.setAttribute("mensagem", "Produto removido!");
+            req.setAttribute("mensagem", "Despesa excluida!");
         } catch (DBException e) {
             e.printStackTrace();
             req.setAttribute("erro", "Erro ao atualizar!");
@@ -106,7 +106,7 @@ public class ExpenseServlet extends HttpServlet {
 
             dao.create(expense);
 
-            req.setAttribute("mensagem", "Produto cadastrado!");
+            req.setAttribute("mensagem", "Despesa adicionada!");
 
         } catch (DBException db) {
             db.printStackTrace();
@@ -157,7 +157,7 @@ public class ExpenseServlet extends HttpServlet {
 
             dao.update(expense);
 
-            req.setAttribute("mensagem", "Produto atualizado!");
+            req.setAttribute("mensagem", "Despesa atualizada!");
         } catch (DBException db) {
             db.printStackTrace();
             req.setAttribute("erro", "Erro ao atualizar");

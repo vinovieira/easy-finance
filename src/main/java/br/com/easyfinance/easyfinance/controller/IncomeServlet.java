@@ -45,7 +45,7 @@ public class IncomeServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("idDelete"));
         try {
             dao.delete(id);
-            req.setAttribute("mensagem", "Produto removido!");
+            req.setAttribute("mensagem", "Receita excluida!");
         } catch (DBException e) {
             e.printStackTrace();
             req.setAttribute("erro", "Erro ao atualizar!");
@@ -77,11 +77,11 @@ public class IncomeServlet extends HttpServlet {
 
             dao.create(income);
 
-            req.setAttribute("mensagem", "Produto cadastrado!");
+            req.setAttribute("mensagem", "Receita adicionada!");
 
         } catch (DBException db) {
             db.printStackTrace();
-            req.setAttribute("erro", "Erro ao create");
+            req.setAttribute("erro", "Erro ao adicionar");
         } catch (Exception e) {
             e.printStackTrace();
             req.setAttribute("erro", "Por favor, valide os dados");
@@ -115,7 +115,7 @@ public class IncomeServlet extends HttpServlet {
 
             dao.update(income);
 
-            req.setAttribute("mensagem", "Produto atualizado!");
+            req.setAttribute("mensagem", "Receita atualizada!");
         } catch (DBException db) {
             db.printStackTrace();
             req.setAttribute("erro", "Erro ao atualizar");

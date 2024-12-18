@@ -89,7 +89,10 @@
                                                           maxFractionDigits="2" minFractionDigits="2"
                                                           currencyCode="BRL"/>
                                     </h2>
-                                    <a href="#" class="btn btn-outline-success">Adicionar Receita</a>
+                                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                            data-bs-target="#modalCreateIncome">
+                                        Adicionar Receita
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +105,10 @@
                                                           maxFractionDigits="2" minFractionDigits="2"
                                                           currencyCode="BRL"/>
                                     </h2>
-                                    <a href="#" class="btn btn-outline-danger">Adicionar Despesa</a>
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                            data-bs-target="#modalCreateExpense">
+                                        Adicionar Despesa
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -217,6 +223,8 @@
     </div>
 </div>
 <%@include file="footer.jsp" %>
+<%@include file="modal/modalCreateIncome.jsp"%>
+<%@include file="modal/modalCreateExpense.jsp"%>
 <script src="resources/js/bootstrap.bundle.js"></script>
 </body>
 </html>

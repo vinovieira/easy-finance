@@ -43,7 +43,7 @@
                         <div class="mb-3">
                             <div class="card border-success">
                                 <div class="card-body ">
-                                    <h5 class="card-title">Despesas</h5>
+                                    <h5 class="card-title">Receitas</h5>
                                     <h2 class="card-text">
                                         <fmt:formatNumber value="${incomeSum}" type="currency" groupingUsed="true"
                                                           maxFractionDigits="2" minFractionDigits="2"
@@ -171,148 +171,11 @@
         </div>
     </div>
 </div>
-<!-- Modais -->
-<div class="modal fade" id="modalCreateIncome" tabindex="-1" aria-labelledby="modalCreateIncomeLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalCreateIncomeLabel">Cadastro de Receita</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="income?action=create" method="post">
-                    <input type="hidden" name="user-id" value="${user.getId()}" required>
-                    <div class="form-group mb-3">
-                        <label for="id-description">Descrição</label> required
-                        <input type="text" name="description" id="id-description" class="form-control"
-                               placeholder="Salário" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="id-value">Valor</label>
-                        <input type="text" name="value" id="id-value" class="form-control" placeholder="12950.67"
-                               required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="id-date">Data</label>
-                        <input type="date" name="date" id="id-date" class="form-control" value="${LocalDate.now()}">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="id-source">Fonte</label>
-                        <input type="text" name="source" id="id-source" class="form-control" placeholder="Google"
-                               required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div
-        class="modal fade"
-        id="deleteModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1
-                        class="modal-title fs-5"
-                        id="exampleModalLabel">
-                    Confirmar Exclusão
-                </h1>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close">
-                </button>
-            </div>
-            <div class="modal-body">
-                <h4>Você confirma a exclusão deste produto?</h4>
-                <p><strong>Atenção!</strong> Esta ação é irreversível.</p>
-            </div>
-            <div class="modal-footer">
-
-                <form action="income" method="post">
-                    <input
-                            type="hidden"
-                            name="action"
-                            value="delete">
-                    <input
-                            type="hidden"
-                            name="idDelete"
-                            id="idDelete">
-                    <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal">
-                        Não
-                    </button>
-                    <button
-                            type="submit"
-                            class="btn btn-danger">
-                        Sim
-                    </button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalUpdateIncome" tabindex="-1" aria-labelledby="modalUpdateIncomeLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalUpdateIncomeLabel">Atualizar Receita</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="income" method="post">
-                    <input type="hidden" value="update" name="action">
-                    <input type="hidden" value="${income.id}" name="id" required>
-                    <input type="hidden" name="user-id" value="${user.getId()}" required>
-
-                    <div class="form-group mb-3">
-                        <label for="id-update-description">Nome</label>
-                        <input type="text" name="description" id="id-update-description" class="form-control"
-                               value="${income.description}" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="id-update-value">Valor</label>
-                        <input type="text" name="value" id="id-update-value" class="form-control"
-                               value="${income.value}" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="id-update-date">Data</label>
-                        <input type="date" name="date" id="id-update-date" class="form-control" value="${income.date}"
-                               required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="id-update-source">Fonte</label>
-                        <input type="text" name="source" id="id-update-source" class="form-control"
-                               value="${income.source}" required>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                        <a href="income?action=list" class="btn btn-warning">Cancelar</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<%@include file="footer.jsp" %>
+<%@include file="modal/modalCreateIncome.jsp"%>
+<%@include file="modal/modalDeleteIncome.jsp"%>
+<%@include file="modal/modalUpdateIncome.jsp"%>
 <%@include file="footer.jsp" %>
 <script src="resources/js/bootstrap.bundle.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        <% if (request.getAttribute("showModal") != null && (boolean) request.getAttribute("showModal")) { %>
-        const modal = new bootstrap.Modal(document.getElementById('modalUpdateIncome'));
-        modal.show();
-        <% } %>
-    });
-</script>
 </body>
 </html>
