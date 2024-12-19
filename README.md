@@ -22,7 +22,7 @@
 
 ## Funcionalidades
 - Envio de Email de acesso ao sistema.
-- Cadastro de usuários e autenticação segura.
+- Login de usuários e autenticação segura.
 - CRUD de receitas e despesas.
 - Visualização de receitas, despesas e saldo.
 - Filtro de dados por mês e ano.
@@ -30,7 +30,7 @@
 - Interface responsiva para acesso em diferentes dispositivos.
 - Light/Dark mode.
 
-## Próximas Funcionalidades
+## Funcionalidades Futuras
 - CRUD de investimentos.
 - Gráficos de controle.
 - Relátório em PDF e Excel.

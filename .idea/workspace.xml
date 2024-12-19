@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="easy-finance:war" />
       <artifact name="easy-finance:war exploded" />
     </artifacts-to-build>
   </component>
@@ -10,10 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment=":boom: fix: minor adjustments">
+    <list default="true" id="581495bd-fbd1-426e-85c3-5845a051e34d" name="Changes" comment=":sparkles: feat: add login page">
+      <change afterPath="$PROJECT_DIR$/SCRIPT_DDL_EASYFINANCE.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/dao/SourceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/model/Source.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/test/OperationClassTeste.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/IncomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/IncomeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/list-income.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modal/modalDeleteExpense.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modal/modalDeleteExpense.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modal/modalDeleteIncome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modal/modalDeleteIncome.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +33,8 @@
       <list>
         <option value="Exception" />
         <option value="Interface" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -42,12 +47,12 @@
     &quot;assignee&quot;: &quot;vinovieira&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/vinovieira/easy-finance.git",
-    "accountId": "03ab2279-9ab3-49d0-848d-909b9fd67d60"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/vinovieira/easy-finance.git&quot;,
+    &quot;accountId&quot;: &quot;a1a6fcb6-fc6a-4d8b-af1f-03405ad87046&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/br/com/easyfinance/easyfinance/controller/ReceitaServlet.java" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -85,10 +90,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Tomcat Server.Tomcat 10.1.31.executor&quot;: &quot;Run&quot;,
     &quot;Tomcat Server.dashboard.jsp.executor&quot;: &quot;Run&quot;,
+    &quot;Tomcat Server.login.jsp.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Silvino/Desktop/PROGRAMAÇÃO/PROJETOS/EasyFinance&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Silvino/Desktop/PROGRAMAÇÃO/projetos/EasyFinance/src/main/webapp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -108,6 +114,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Silvino\Desktop\PROGRAMAÇÃO\projetos\EasyFinance\src\main\webapp" />
+      <recent name="C:\Users\Silvino\Desktop\PROGRAMAÇÃO\projetos\EasyFinance\src\main\webapp\modal" />
       <recent name="C:\Users\Silvino\Desktop\PROGRAMAÇÃO\PROJETOS\EasyFinance\src\main\webapp" />
       <recent name="C:\Users\Silvino\Desktop\PROGRAMAÇÃO\PROJETOS\EasyFinance\src\main\webapp\resources" />
     </key>
@@ -423,17 +431,113 @@
         </option>
       </method>
     </configuration>
+    <configuration name="login.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 10.1.31" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="21">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/login.jsp" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="easy-finance:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/easy_finance_war" />
+          </settings>
+        </artifact>
+        <artifact name="easy-finance:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/easy_finance_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="075c501c-a29b-4e81-8bf9-8d29cc6c5c46" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62112" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="easy-finance:war" />
+          <artifact name="easy-finance:war exploded" />
+        </option>
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.OperationClassTeste" />
       <item itemvalue="Application.test" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.31" />
+      <item itemvalue="Tomcat Server.login.jsp" />
       <item itemvalue="Tomcat Server.dashboard.jsp" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test" />
+        <item itemvalue="Tomcat Server.login.jsp" />
         <item itemvalue="Application.OperationClassTeste" />
         <item itemvalue="Tomcat Server.dashboard.jsp" />
+        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -469,8 +573,9 @@
       <workItem from="1734195169246" duration="8176000" />
       <workItem from="1734226000692" duration="666000" />
       <workItem from="1734266895766" duration="27603000" />
-      <workItem from="1734357420558" duration="38663000" />
-      <workItem from="1734458820223" duration="23830000" />
+      <workItem from="1734357420558" duration="39383000" />
+      <workItem from="1734551277406" duration="21974000" />
+      <workItem from="1734632456486" duration="7410000" />
     </task>
     <task id="LOCAL-00001" summary="primeiro commit">
       <option name="closed" value="true" />
@@ -672,15 +777,79 @@
       <option name="project" value="LOCAL" />
       <updated>1734409507246</updated>
     </task>
-    <task id="LOCAL-00026" summary=":boom: fix: minor adjustments">
+    <task id="LOCAL-00026" summary=":lipstick: feat: minor adjustments">
       <option name="closed" value="true" />
-      <created>1734490990816</created>
+      <created>1734409669613</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1734490990817</updated>
+      <updated>1734409669613</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary=".">
+      <option name="closed" value="true" />
+      <created>1734409715137</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1734409715137</updated>
+    </task>
+    <task id="LOCAL-00028" summary=":recycle: refactor: create modal jsp page for reuse and minor adjdustments">
+      <option name="closed" value="true" />
+      <created>1734555656563</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1734555656563</updated>
+    </task>
+    <task id="LOCAL-00029" summary=":sparkles: feat: light/dark mode">
+      <option name="closed" value="true" />
+      <created>1734564399947</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1734564399947</updated>
+    </task>
+    <task id="LOCAL-00030" summary=":boom: fix: double footer fix">
+      <option name="closed" value="true" />
+      <created>1734564566451</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1734564566451</updated>
+    </task>
+    <task id="LOCAL-00031" summary=":sparkles: feat: dashboard filter">
+      <option name="closed" value="true" />
+      <created>1734569819788</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1734569819788</updated>
+    </task>
+    <task id="LOCAL-00032" summary=":sparkles: feat: dashboard filter">
+      <option name="closed" value="true" />
+      <created>1734570012503</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1734570012503</updated>
+    </task>
+    <task id="LOCAL-00033" summary=":boom: fix: dashboard expense create modal">
+      <option name="closed" value="true" />
+      <created>1734575527829</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1734575527829</updated>
+    </task>
+    <task id="LOCAL-00034" summary=":sparkles: feat: add login page">
+      <option name="closed" value="true" />
+      <created>1734639719080</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1734639719080</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,12 +882,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="inserir controle de receita funcional" />
-    <MESSAGE value="inserir login, filtro, email de login" />
-    <MESSAGE value="refactor: user" />
-    <MESSAGE value="refactor: Expense and Income Dao Interface, Dao Implementation and Model" />
-    <MESSAGE value="refactor: IncomeServlet and list-income.jsp" />
-    <MESSAGE value="refactor: ExpenseServlet and list-expense.jsp" />
     <MESSAGE value="fix: login and others" />
     <MESSAGE value="fix: login and others and feat: user save in session" />
     <MESSAGE value="feat: create and list expenses by user id" />
@@ -727,7 +890,6 @@
     <MESSAGE value="fix: expense crud" />
     <MESSAGE value="fix: income crud" />
     <MESSAGE value=":lipstick: feat: improve inputs" />
-    <MESSAGE value="." />
     <MESSAGE value=":boom: fix: expense date input" />
     <MESSAGE value=":sparkles: feat: add a category dropdown menu for creating and editing expenses" />
     <MESSAGE value=":sparkles: feat: add a payment method dropdown menu for creating and editing expenses" />
@@ -737,8 +899,15 @@
     <MESSAGE value="fix: .gitignore" />
     <MESSAGE value="feat: adjust table" />
     <MESSAGE value=":sparkles: feat: add dashboard page and its functions" />
-    <MESSAGE value=":boom: fix: minor adjustments" />
-    <option name="LAST_COMMIT_MESSAGE" value=":boom: fix: minor adjustments" />
+    <MESSAGE value=":lipstick: feat: minor adjustments" />
+    <MESSAGE value="." />
+    <MESSAGE value=":recycle: refactor: create modal jsp page for reuse and minor adjdustments" />
+    <MESSAGE value=":sparkles: feat: light/dark mode" />
+    <MESSAGE value=":boom: fix: double footer fix" />
+    <MESSAGE value=":sparkles: feat: dashboard filter" />
+    <MESSAGE value=":boom: fix: dashboard expense create modal" />
+    <MESSAGE value=":sparkles: feat: add login page" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: feat: add login page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
