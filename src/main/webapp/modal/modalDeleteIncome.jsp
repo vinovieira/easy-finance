@@ -21,7 +21,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h4>Você confirma a exclusão deste produto?</h4>
+                <h4>Você confirma a exclusão desta receita?</h4>
                 <p><strong>Atenção!</strong> Esta ação é irreversível.</p>
             </div>
             <div class="modal-footer">
