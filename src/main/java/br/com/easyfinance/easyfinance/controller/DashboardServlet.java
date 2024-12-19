@@ -1,12 +1,11 @@
 package br.com.easyfinance.easyfinance.controller;
 
+import br.com.easyfinance.easyfinance.dao.CategoryDao;
 import br.com.easyfinance.easyfinance.dao.ExpenseDao;
 import br.com.easyfinance.easyfinance.dao.IncomeDao;
+import br.com.easyfinance.easyfinance.dao.PaymentMethodDao;
 import br.com.easyfinance.easyfinance.factory.DaoFactory;
-import br.com.easyfinance.easyfinance.model.Expense;
-import br.com.easyfinance.easyfinance.model.Income;
-import br.com.easyfinance.easyfinance.model.Operation;
-import br.com.easyfinance.easyfinance.model.User;
+import br.com.easyfinance.easyfinance.model.*;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -24,12 +23,16 @@ public class DashboardServlet extends HttpServlet {
 
     private ExpenseDao expenseDao;
     private IncomeDao incomeDao;
+    private CategoryDao categoryDao;
+    private PaymentMethodDao paymentMethodDao;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         expenseDao = DaoFactory.getExpenseDao();
         incomeDao = DaoFactory.getIncomeDao();
+        categoryDao = DaoFactory.getCategoryDao();
+        paymentMethodDao = DaoFactory.getPaymentMethodDao();
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -49,6 +52,12 @@ public class DashboardServlet extends HttpServlet {
 
         List<Income> incomeList = incomeDao.list(userId);
         List<Expense> expenseList = expenseDao.list(userId);
+
+        List<PaymentMethod> paymentMethodList = paymentMethodDao.list();
+        req.setAttribute("paymentMethodList", paymentMethodList);
+
+        List<Category> categoryList = categoryDao.list();
+        req.setAttribute("categoryList", categoryList);
 
         List<Operation> dashboardList = getSortedOperationList(incomeList, expenseList);
 
