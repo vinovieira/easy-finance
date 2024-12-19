@@ -1,6 +1,17 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+          integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
 <nav class="navbar border-bottom border-body navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.jsp"><i class="fa-light fa-file-invoice-dollar"></i> EasyFinance</a>
+        <c:if test="${empty user }">
+            <a class="navbar-brand" href="#"><i class="fa-light fa-file-invoice-dollar"></i>EasyFinance</a>
+        </c:if>
+        <c:if test="${not empty user }">
+        <a class="navbar-brand" href="dashboard?action=list"><i class="fa-light fa-file-invoice-dollar"></i> EasyFinance</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,48 +28,18 @@
                     <a class="nav-link" href="income?action=list">Receitas</a>
                 </li>
             </ul>
-            <c:if test="${empty user }">
-               <span class="navbar-text text-danger" style="margin-right:10px">
-                       ${erro }
-               </span>
-                <form class="form-inline my-lg-0" action="login" method="post">
-                    <div class="row">
-                        <div class="col">
-                            <input
-                                    class="form-control mr-sm-2"
-                                    type="text"
-                                    name="email"
-                                    placeholder="E-mail">
-                        </div>
-                        <div class="col">
-                            <input
-                                    class="form-control mr-sm-2"
-                                    type="password"
-                                    name="password"
-                                    placeholder="Senha">
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-outline-success my-2 my-sm-0"
-                                    type="submit">Entrar
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </c:if>
-            <c:if test="${not empty user }">
-               <span class="navbar-text"> Bem vindo,
+            <span class="navbar-text"> Bem vindo,
                    ${user.getName() }!
-                   <a href="login" class="btn btn-outline-primary my-2 my-sm-0">Sair</a>
+                   <a href="login" class="btn btn-outline-danger my-2 my-sm-0">Sair</a>
                </span>
-            </c:if>
             <ul class="navbar-nav mx-1 mb-2 mb-lg-0">
                 <li class="nav-item">
                     <button id="toggleTheme" class="btn btn-outline-light border-light text-light ms-auto">
-                        <i id="themeIcon" class="fa-solid fa-moon"></i>
+                        <i id="themeIcon" class="fa-regular fa-moon"></i>
                     </button>
                 </li>
             </ul>
-
+            </c:if>
         </div>
     </div>
 </nav>
