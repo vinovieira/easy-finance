@@ -40,9 +40,6 @@ public class DashboardServlet extends HttpServlet {
             case "list":
                 list(req, resp);
         }
-
-
-
     }
 
     private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,16 +52,6 @@ public class DashboardServlet extends HttpServlet {
 
         List<Operation> dashboardList = getSortedOperationList(incomeList, expenseList);
 
-        double incomeSum = incomeList.stream()
-                .mapToDouble(Income::getValue)
-                .sum();
-
-        double expenseSum = expenseList.stream()
-                        .mapToDouble(Expense::getValue)
-                        .sum();
-
-        req.setAttribute("incomeSum", incomeSum);
-        req.setAttribute("expenseSum", expenseSum);
         req.setAttribute("dashboardList", dashboardList);
         req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 
@@ -75,11 +62,7 @@ public class DashboardServlet extends HttpServlet {
         dashboardList.addAll(incomeList);
         dashboardList.addAll(expenseList);
 
-        dashboardList.sort((t1, t2) -> {
-            LocalDate data1 = (t1 instanceof Expense) ? ((Expense) t1).getDate() : ((Income) t1).getDate();
-            LocalDate data2 = (t2 instanceof Expense) ? ((Expense) t2).getDate() : ((Income) t2).getDate();
-            return data1.compareTo(data2);
-        });
+        dashboardList.sort((t1, t2) -> { return t2.getDate().compareTo(t1.getDate()); });
 
         return dashboardList;
     };

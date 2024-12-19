@@ -44,21 +44,24 @@
                         <div class="card-body">
                             <h5 class="card-title">Filtros</h5>
                             <div class="btn-group d-flex flex-wrap" role="group" aria-label="Basic outlined example">
-                                <c:url value="dashboard" var="link">
-                                    <c:param name="action" value="list"/>
-                                    <c:param name="dateStart" value="${LocalDate.now().minusWeeks(1)}"/>
-                                    <c:param name="dateEnd" value="${LocalDate.now()}"/>
-                                </c:url>
-                                <a type="button" class="btn btn-outline-secondary" href="${link}">Últimos 7 dias</a>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle"
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         Selecione o mês
                                     </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Janeiro</a></li>
-                                        <li><a class="dropdown-item" href="#">Fevereiro</a></li>
-                                        <li><a class="dropdown-item" href="#">Março</a></li>
+                                    <ul class="dropdown-menu" id="monthDropdown">
+                                        <li><a class="dropdown-item" href="#" data-month="1">Janeiro</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="2">Fevereiro</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="3">Março</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="4">Abril</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="5">Maio</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="6">Junho</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="7">Julho</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="8">Agosto</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="9">Setembro</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="10">Outubro</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="11">Novembro</a></li>
+                                        <li><a class="dropdown-item" href="#" data-month="12">Dezembro</a></li>
                                     </ul>
                                 </div>
                                 <div class="btn-group" role="group">
@@ -66,25 +69,25 @@
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         Selecione o ano
                                     </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">2024</a></li>
-                                        <li><a class="dropdown-item" href="#">2023</a></li>
-                                        <li><a class="dropdown-item" href="#">2022</a></li>
+                                    <ul class="dropdown-menu" id="yearDropdown">
+                                        <li><a class="dropdown-item" href="#" data-year="2024">2024</a></li>
+                                        <li><a class="dropdown-item" href="#" data-year="2023">2023</a></li>
+                                        <li><a class="dropdown-item" href="#" data-year="2022">2022</a></li>
                                     </ul>
                                 </div>
-
-                                <button type="button" class="btn btn-outline-secondary">Sempre</button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="clearFilters()">Sempre</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-4 mb-3">
                         <div class="mb-3">
                             <div class="card border-success">
-                                <div class="card-body ">
+                                <div class="card-body " id="incomeCard">
                                     <h5 class="card-title">Receitas</h5>
-                                    <h2 class="card-text">
+                                    <h2 class="card-text" id="incomeSum">
                                         <fmt:formatNumber value="${incomeSum}" type="currency" groupingUsed="true"
                                                           maxFractionDigits="2" minFractionDigits="2"
                                                           currencyCode="BRL"/>
@@ -98,9 +101,9 @@
                         </div>
                         <div class="mb-3">
                             <div class="card border-danger">
-                                <div class="card-body ">
+                                <div class="card-body " id="expenseCard">
                                     <h5 class="card-title">Despesas</h5>
-                                    <h2 class="card-text">
+                                    <h2 class="card-text" id="expenseSum">
                                         <fmt:formatNumber value="${expenseSum}" type="currency" groupingUsed="true"
                                                           maxFractionDigits="2" minFractionDigits="2"
                                                           currencyCode="BRL"/>
@@ -116,24 +119,25 @@
                             <div class="card border-primary">
                                 <div class="card-body">
                                     <h5 class="card-title">Saldo</h5>
-                                    <h2 class="card-text"><fmt:formatNumber value="${incomeSum - expenseSum}"
-                                                                            type="currency" groupingUsed="true"
-                                                                            maxFractionDigits="2" minFractionDigits="2"
-                                                                            currencyCode="BRL"/></h2>
+                                    <h2 class="card-text" id="balanceSum">
+                                        <fmt:formatNumber value="${incomeSum - expenseSum}" type="currency" groupingUsed="true"
+                                                          maxFractionDigits="2" minFractionDigits="2"
+                                                          currencyCode="BRL"/>
+                                    </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <table class="table">
+                        <table class="table" id="operationsTable">
                             <thead>
                             <tr>
                                 <th colspan="4" class="text-center">Atividades Recentes</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tableBody">
                             <c:forEach items="${dashboardList}" var="operation">
-                                <tr>
+                                <tr class="operation-row" data-month="${operation.date.monthValue}" data-year="${operation.date.year}">
                                     <td class="text-end">
                                         <c:choose>
                                             <c:when test="${operation.getClass() == 'class br.com.easyfinance.easyfinance.model.Expense' }">
@@ -148,7 +152,8 @@
                                     <td class="text-end ${operation.getClass() == 'class br.com.easyfinance.easyfinance.model.Expense' ? "text-danger-emphasis" : "text-success-emphasis"}">
                                         <fmt:formatNumber value="${operation.value}" type="currency" groupingUsed="true"
                                                           maxFractionDigits="2" minFractionDigits="2"
-                                                          currencyCode="BRL"/></td>
+                                                          currencyCode="BRL"/>
+                                    </td>
                                     <td class="text-end">
                                         <fmt:parseDate
                                                 value="${operation.date}"
@@ -168,60 +173,64 @@
         </div>
     </div>
 </div>
-<!-- Modais -->
-<div
-        class="modal fade"
-        id="deleteModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1
-                        class="modal-title fs-5"
-                        id="exampleModalLabel">
-                    Confirmar Exclusão
-                </h1>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close">
-                </button>
-            </div>
-            <div class="modal-body">
-                <h4>Você confirma a exclusão deste produto?</h4>
-                <p><strong>Atenção!</strong> Esta ação é irreversível.</p>
-            </div>
-            <div class="modal-footer">
 
-                <form action="expense" method="post">
-                    <input
-                            type="hidden"
-                            name="action"
-                            value="delete">
-                    <input
-                            type="hidden"
-                            name="idDelete"
-                            id="idDelete">
-                    <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal">
-                        Não
-                    </button>
-                    <button
-                            type="submit"
-                            class="btn btn-danger">
-                        Sim
-                    </button>
-                </form>
+<script>
+    let incomeSum = 0;
+    let expenseSum = 0;
 
-            </div>
-        </div>
-    </div>
-</div>
+    function applyFilters(month, year) {
+        const rows = document.querySelectorAll('.operation-row');
+        incomeSum = 0;
+        expenseSum = 0;
+
+        rows.forEach(row => {
+            const rowMonth = row.getAttribute('data-month');
+            const rowYear = row.getAttribute('data-year');
+            const value = parseFloat(row.querySelector('td:nth-child(3)').textContent.replace('R$', '').replace('.', '').replace(',', '.'));
+
+            if ((month && rowMonth !== month) || (year && rowYear !== year)) {
+                row.style.display = 'none';
+            } else {
+                row.style.display = '';
+                if (row.querySelector('td:nth-child(1) i').classList.contains('fa-arrow-right-from-bracket')) {
+                    expenseSum += value;
+                } else {
+                    incomeSum += value;
+                }
+            }
+        });
+
+        updateSums();
+    }
+
+    function updateSums() {
+        document.getElementById('incomeSum').textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incomeSum);
+        document.getElementById('expenseSum').textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(expenseSum);
+        document.getElementById('balanceSum').textContent = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incomeSum - expenseSum);
+    }
+
+    document.querySelectorAll('#monthDropdown .dropdown-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const month = e.target.getAttribute('data-month');
+            applyFilters(month, null);
+        });
+    });
+
+    document.querySelectorAll('#yearDropdown .dropdown-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const year = e.target.getAttribute('data-year');
+            applyFilters(null, year);
+        });
+    });
+
+    function clearFilters() {
+        applyFilters(null, null);
+    }
+
+    applyFilters((new Date().getMonth() + 1).toString().padStart(2, '0'), null);
+
+</script>
+
 <%@include file="footer.jsp" %>
 <%@include file="modal/modalCreateIncome.jsp"%>
 <%@include file="modal/modalCreateExpense.jsp"%>

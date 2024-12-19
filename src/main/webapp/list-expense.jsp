@@ -65,21 +65,24 @@
                                 <h5 class="card-title">Filtros</h5>
                                 <div class="btn-group d-flex flex-wrap" role="group"
                                      aria-label="Basic outlined example">
-                                    <c:url value="dashboard" var="link">
-                                        <c:param name="action" value="list"/>
-                                        <c:param name="dateStart" value="${LocalDate.now().minusWeeks(1)}"/>
-                                        <c:param name="dateEnd" value="${LocalDate.now()}"/>
-                                    </c:url>
-                                    <a type="button" class="btn btn-outline-secondary" href="${link}">Últimos 7 dias</a>
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-outline-secondary dropdown-toggle"
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                             Selecione o mês
                                         </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Janeiro</a></li>
-                                            <li><a class="dropdown-item" href="#">Fevereiro</a></li>
-                                            <li><a class="dropdown-item" href="#">Março</a></li>
+                                        <ul class="dropdown-menu" id="monthDropdown">
+                                            <li><a class="dropdown-item" href="#" data-month="1">Janeiro</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="2">Fevereiro</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="3">Março</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="4">Abril</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="5">Maio</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="6">Junho</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="7">Julho</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="8">Agosto</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="9">Setembro</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="10">Outubro</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="11">Novembro</a></li>
+                                            <li><a class="dropdown-item" href="#" data-month="12">Dezembro</a></li>
                                         </ul>
                                     </div>
                                     <div class="btn-group" role="group">
@@ -87,14 +90,15 @@
                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                             Selecione o ano
                                         </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">2024</a></li>
-                                            <li><a class="dropdown-item" href="#">2023</a></li>
-                                            <li><a class="dropdown-item" href="#">2022</a></li>
+                                        <ul class="dropdown-menu" id="yearDropdown">
+                                            <li><a class="dropdown-item" href="#" data-year="2024">2024</a></li>
+                                            <li><a class="dropdown-item" href="#" data-year="2023">2023</a></li>
+                                            <li><a class="dropdown-item" href="#" data-year="2022">2022</a></li>
                                         </ul>
                                     </div>
-
-                                    <button type="button" class="btn btn-outline-secondary">Sempre</button>
+                                    <button type="button" class="btn btn-outline-secondary" onclick="clearFilters()">
+                                        Sempre
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -189,9 +193,9 @@
     </div>
 </div>
 <!-- Modais -->
-<%@include file="modal/modalCreateExpense.jsp"%>
-<%@include file="modal/modalDeleteExpense.jsp"%>
-<%@include file="modal/modalUpdateExpense.jsp"%>
+<%@include file="modal/modalCreateExpense.jsp" %>
+<%@include file="modal/modalDeleteExpense.jsp" %>
+<%@include file="modal/modalUpdateExpense.jsp" %>
 <%@include file="footer.jsp" %>
 <script src="resources/js/bootstrap.bundle.js"></script>
 </body>
